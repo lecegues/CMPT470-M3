@@ -1,7 +1,5 @@
-# CMPT 470 - Milestone 3
-## Reproducibility Assessment of Code Clone Detection Tools  
+# CMPT 470 - Milestone 3: Reproducibility Assessment of Code Clone Detection Tools  
 
----
 ## Group Information
 **Group Name:**  
 (volatile team_t *)0 = "name"
@@ -12,7 +10,6 @@
 - Abaan Hussain (woj352)
 - Ugwu Onyebuchi (ocul177)
 
----
 ## Assigned Tools
 1. **CLCDSA**
 2. **LICCA**
