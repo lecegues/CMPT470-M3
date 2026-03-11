@@ -91,6 +91,87 @@ java -jar LICCA/licca/ssqsa_2.0/CloneUI/build/libs/clone_ui-2.0.0-fat.jar
 
 Benchmark name(s), dataset size (if subset used), settings used
 
+Benchmark: BigCloneBench
+
+Could not run the benchmark, failed with the following error(s).
+
+<details>
+<summary>Output</summary>
+Importing clones...
+java.sql.SQLException: Unable to open a test connection to the given database. JDBC url = jdbc:h2:/home/abaan404/Development/git/CMPT470-M3/LICCA/BigCloneEval/bigclonebenchdb/bcb;IFEXISTS
+=TRUE, username = sa. Terminating connection pool (set lazyInit to true if you expect to start your database after your app). Original Exception: ------
+org.h2.jdbc.JdbcSQLException: Database "/home/abaan404/Development/git/CMPT470-M3/LICCA/BigCloneEval/bigclonebenchdb/bcb" not found [90013-176]
+        at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+        at org.h2.message.DbException.get(DbException.java:178)
+        at org.h2.message.DbException.get(DbException.java:154)
+        at org.h2.engine.Engine.openSession(Engine.java:55)
+        at org.h2.engine.Engine.openSession(Engine.java:164)
+        at org.h2.engine.Engine.createSessionAndValidate(Engine.java:142)
+        at org.h2.engine.Engine.createSession(Engine.java:125)
+        at org.h2.engine.Engine.createSession(Engine.java:27)
+        at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:331)
+        at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:107)
+        at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:91)
+        at org.h2.Driver.connect(Driver.java:74)
+        at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+        at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+        at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:363)
+        at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:416)
+        at database.BigCloneBenchDB.<init>(BigCloneBenchDB.java:44)
+        at database.BigCloneBenchDB.getConnectionPool(BigCloneBenchDB.java:31)
+        at database.BigCloneBenchDB.getConnection(BigCloneBenchDB.java:48)
+        at database.Functionalities.getFunctionalityIds(Functionalities.java:15)
+        at evaluate.ToolEvaluator.<init>(ToolEvaluator.java:2480)
+        at tasks.EvaluateRecall.call(EvaluateRecall.java:86)
+        at tasks.EvaluateRecall.call(EvaluateRecall.java:21)
+        at picocli.CommandLine.executeUserObject(CommandLine.java:1743)
+        at picocli.CommandLine.access$900(CommandLine.java:145)
+        at picocli.CommandLine$RunLast.handle(CommandLine.java:2101)
+        at picocli.CommandLine$RunLast.handle(CommandLine.java:2068)
+        at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:1935)
+        at picocli.CommandLine.execute(CommandLine.java:1864)
+        at tasks.BigCloneBench.main(BigCloneBench.java:31)
+------
+
+        at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+        at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+        at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+        at com.jolbox.bonecp.PoolUtil.generateSQLException(PoolUtil.java:192)
+        at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:422)
+        at database.BigCloneBenchDB.<init>(BigCloneBenchDB.java:44)
+        at database.BigCloneBenchDB.getConnectionPool(BigCloneBenchDB.java:31)
+        at database.BigCloneBenchDB.getConnection(BigCloneBenchDB.java:48)
+        at database.Functionalities.getFunctionalityIds(Functionalities.java:15)
+        at evaluate.ToolEvaluator.<init>(ToolEvaluator.java:2480)
+        at tasks.EvaluateRecall.call(EvaluateRecall.java:86)
+        at tasks.EvaluateRecall.call(EvaluateRecall.java:21)
+        at picocli.CommandLine.executeUserObject(CommandLine.java:1743)
+        at picocli.CommandLine.access$900(CommandLine.java:145)
+        at picocli.CommandLine$RunLast.handle(CommandLine.java:2101)
+        at picocli.CommandLine$RunLast.handle(CommandLine.java:2068)
+        at picocli.CommandLine$AbstractParseResultHandler.execute(CommandLine.java:1935)
+        at picocli.CommandLine.execute(CommandLine.java:1864)
+        at tasks.BigCloneBench.main(BigCloneBench.java:31)
+Caused by: org.h2.jdbc.JdbcSQLException: Database "/home/abaan404/Development/git/CMPT470-M3/LICCA/BigCloneEval/bigclonebenchdb/bcb" not found [90013-176]
+        at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+        at org.h2.message.DbException.get(DbException.java:178)
+        at org.h2.message.DbException.get(DbException.java:154)
+        at org.h2.engine.Engine.openSession(Engine.java:55)
+        at org.h2.engine.Engine.openSession(Engine.java:164)
+        at org.h2.engine.Engine.createSessionAndValidate(Engine.java:142)
+        at org.h2.engine.Engine.createSession(Engine.java:125)
+        at org.h2.engine.Engine.createSession(Engine.java:27)
+        at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:331)
+        at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:107)
+        at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:91)
+        at org.h2.Driver.connect(Driver.java:74)
+        at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+        at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+        at com.jolbox.bonecp.BoneCP.obtainRawInternalConnection(BoneCP.java:363)
+        at com.jolbox.bonecp.BoneCP.<init>(BoneCP.java:416)
+        ... 14 more
+</details>
+
 ## 5. Interventions Performed
 
 Description of any fixes, dependency updates, configuration changes, or troubleshooting steps
@@ -103,10 +184,12 @@ The hardcoded path also had to be manually updated in `./licca/ssqsa_2.0/eCSTGen
 
 Did the tool run succesfully, did it complete the full workflow, any crashes or partial execution?
 
-The tool ran successfully.
+The tool ran successfully. The workflow completed partially as the Benchmark itself crashed.
 
-![LICCA-1](../assets/LICCA-Running.png)
+![LICCA-1](./assets/LICCA-Running.png)
 
 ## 7. TES Classification
 
 Final TES category & justification
+
+TES-C: The tool ran successfully but the benchmark kept running into runtime errors. Could not complete the benchmark.

@@ -1,3 +1,6 @@
 [submodule "LICCA/licca"]
 	path = LICCA/licca
 	url = https://github.com/abaan404/licca
+[submodule "LICCA/BigCloneEval"]
+	path = LICCA/BigCloneEval
+	url = https://github.com/jeffsvajlenko/BigCloneEval
