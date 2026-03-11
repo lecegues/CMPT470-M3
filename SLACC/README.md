@@ -39,9 +39,9 @@ Dependencies:
 
 ### 1. Installing Dependencies
 First, I installed the required dependencies in my WSL Environment:
-Java 8: `sudo apt install openjdk-8-jdk -y` 
-Maven: `sudo apt install maven -y` 
-Python 2.7: `sudo apt install python2 -y`
+- Java 8: `sudo apt install openjdk-8-jdk -y` 
+- Maven: `sudo apt install maven -y` 
+- Python 2.7: `sudo apt install python2 -y`
 
 Then, I had to install the Python dependencies from the codebase
 `pip2 install -r requirements.txt` 
@@ -63,11 +63,14 @@ Then, I had to build the `code/` folder which took another 29 minutes.
 ### 3. Initialization
 First, I had to initialize the mongo database with example data using:
 `sh scripts/common/initialize.sh Example`
+
 This script triggered a FULL REBUILD of both the `projects` and `code`
 (refer to `BUILD4_SUCCESS.txt`)
-Although the build succeeded, running the code had an error, `scripts/common/initialize.sh: 31: python: not found`
+
+Although the build succeeded, running the code had an error, `scripts/common/initialize.sh: 31: python: not found`.
 This was because `python` command was used, rather than `python2` command, which was confusing since Python2 was the dependency.
-So, I linked the `python` keyword to `python2` using ``sudo ln -s /usr/bin/python2 /usr/bin/python`
+So, I linked the `python` keyword to `python2` using `sudo ln -s /usr/bin/python2 /usr/bin/python`.
+
 However, running the script again caused it to rebuild, but I could not wait that long, therefore I commented out the `mvn clean install` part
 of the BUILD files which was unnecessary since I manually built them already. Then, it ran instantly.
 
@@ -76,10 +79,12 @@ Before running execution, I had to update path settings in the relevant files:
 - `ROOT_PATH` in `Settings.java`
 - `ROOT_HOME` in `properties.py`
 
-Then, I ran it using `bash scripts/common/runner.sh Example`
+Then, I ran it using `bash scripts/common/runner.sh Example`.
 It ran, however there were many errors including a MongoDB version incompatibility which was interesting as the
 instructions say "We use MongoDB 3.6 for our experiments but it should work on later versions as well."
+
 Java execution also failed since some classes were not found.
+
 Refer to #6. "Observed Failures" for more information and `RUN_LOG.log`
 
 ## 4. Benchmarks Used
