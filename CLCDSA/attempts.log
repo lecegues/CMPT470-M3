@@ -1,0 +1,641 @@
+// more attempts to get testing to run, trying to get dependencies working
+
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ python UNI/cmpt470/m3/CLCDSA-master/CLCDSA-master/CLCDSA_Code/CLCDSA_DLCC/clcdsa_testing.py
+2026-03-10 21:52:58.568995: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2026-03-10 21:52:58.569717: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Traceback (most recent call last):
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 320, in __getattr__
+    raise AttributeError("module {!r} has no attribute "
+AttributeError: module 'numpy' has no attribute 'typeDict'
+C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py:511: FutureWarning: In the future `np.object` will be defined as the corresponding NumPy scalar.
+  np.object,
+Traceback (most recent call last):
+  File "UNI/cmpt470/m3/CLCDSA-master/CLCDSA-master/CLCDSA_Code/CLCDSA_DLCC/clcdsa_testing.py", line 1, in <module>
+    import keras.models
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\keras\__init__.py", line 3, in <module>
+    from tensorflow.keras.layers.experimental.preprocessing import RandomRotation
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\__init__.py", line 41, in <module>
+    from tensorflow.python.tools import module_util as _module_util
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\__init__.py", line 46, in <module>
+    from tensorflow.python import data
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\__init__.py", line 25, in <module>
+    from tensorflow.python.data import experimental
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\__init__.py", line 99, in <module>
+    from tensorflow.python.data.experimental import service
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\service\__init__.py", line 140, in <module>
+    from tensorflow.python.data.experimental.ops.data_service_ops import distribute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\data_service_ops.py", line 25, in <module>
+    from tensorflow.python.data.experimental.ops import compression_ops
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\compression_ops.py", line 20, in <module>
+    from tensorflow.python.data.util import structure
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\structure.py", line 26, in <module>
+    from tensorflow.python.data.util import nest
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\nest.py", line 40, in <module>
+    from tensorflow.python.framework import sparse_tensor as _sparse_tensor
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\sparse_tensor.py", line 28, in <module>
+    from tensorflow.python.framework import constant_op
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\constant_op.py", line 29, in <module>
+    from tensorflow.python.eager import execute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\eager\execute.py", line 27, in <module>
+    from tensorflow.python.framework import dtypes
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py", line 511, in <module>
+    np.object,
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 305, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'object'.
+`np.object` was a deprecated alias for the builtin `object`. To avoid this error in existing code, use `object` by itself. Doing this will not modify any behavior and is safe.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ pip install numpy==1.19.5 --force-reinstall
+Collecting numpy==1.19.5
+  Using cached numpy-1.19.5-cp38-cp38-win_amd64.whl.metadata (2.0 kB)
+Using cached numpy-1.19.5-cp38-cp38-win_amd64.whl (13.3 MB)
+Installing collected packages: numpy
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.24.4
+    Uninstalling numpy-1.24.4:
+      Successfully uninstalled numpy-1.24.4
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+pandas 2.0.3 requires numpy>=1.20.3; python_version < "3.10", but you have numpy 1.19.5 which is incompatible.
+Successfully installed numpy-1.19.5
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ pip install keras==2.4.3 --force-reinstall
+Collecting keras==2.4.3
+  Using cached Keras-2.4.3-py2.py3-none-any.whl.metadata (1.5 kB)
+Collecting numpy>=1.9.1 (from keras==2.4.3)
+  Using cached numpy-1.24.4-cp38-cp38-win_amd64.whl.metadata (5.6 kB)
+Collecting scipy>=0.14 (from keras==2.4.3)
+  Using cached scipy-1.10.1-cp38-cp38-win_amd64.whl.metadata (58 kB)
+Collecting pyyaml (from keras==2.4.3)
+  Using cached PyYAML-6.0.3-cp38-cp38-win_amd64.whl.metadata (2.2 kB)
+Collecting h5py (from keras==2.4.3)
+  Downloading h5py-3.11.0-cp38-cp38-win_amd64.whl.metadata (2.5 kB)
+Using cached Keras-2.4.3-py2.py3-none-any.whl (36 kB)
+Using cached numpy-1.24.4-cp38-cp38-win_amd64.whl (14.9 MB)
+Using cached scipy-1.10.1-cp38-cp38-win_amd64.whl (42.2 MB)
+Downloading h5py-3.11.0-cp38-cp38-win_amd64.whl (3.0 MB)
+   ---------------------------------------- 3.0/3.0 MB 7.9 MB/s eta 0:00:00
+Using cached PyYAML-6.0.3-cp38-cp38-win_amd64.whl (160 kB)
+Installing collected packages: pyyaml, numpy, scipy, h5py, keras
+  Attempting uninstall: pyyaml
+    Found existing installation: PyYAML 6.0.3
+    Uninstalling PyYAML-6.0.3:
+      Successfully uninstalled PyYAML-6.0.3
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.19.5
+    Uninstalling numpy-1.19.5:
+      Successfully uninstalled numpy-1.19.5
+  Attempting uninstall: scipy
+    Found existing installation: scipy 1.10.1
+    Uninstalling scipy-1.10.1:
+      Successfully uninstalled scipy-1.10.1
+  Attempting uninstall: h5py
+    Found existing installation: h5py 3.1.0
+    Uninstalling h5py-3.1.0:
+      Successfully uninstalled h5py-3.1.0
+  Attempting uninstall: keras
+    Found existing installation: Keras 2.4.3
+    Uninstalling Keras-2.4.3:
+      Successfully uninstalled Keras-2.4.3
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+tensorflow 2.5.0 requires h5py~=3.1.0, but you have h5py 3.11.0 which is incompatible.
+tensorflow 2.5.0 requires numpy~=1.19.2, but you have numpy 1.24.4 which is incompatible.
+Successfully installed h5py-3.11.0 keras-2.4.3 numpy-1.24.4 pyyaml-6.0.3 scipy-1.10.1
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ python UNI/cmpt470/m3/CLCDSA-master/CLCDSA-master/CLCDSA_Code/CLCDSA_DLCC/clcdsa_testing.py
+2026-03-10 21:58:15.656178: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2026-03-10 21:58:15.656680: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Traceback (most recent call last):
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 320, in __getattr__
+    raise AttributeError("module {!r} has no attribute "
+AttributeError: module 'numpy' has no attribute 'typeDict'
+C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py:511: FutureWarning: In the future `np.object` will be defined as the corresponding NumPy scalar.
+  np.object,
+Traceback (most recent call last):
+  File "UNI/cmpt470/m3/CLCDSA-master/CLCDSA-master/CLCDSA_Code/CLCDSA_DLCC/clcdsa_testing.py", line 1, in <module>
+    import keras.models
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\keras\__init__.py", line 3, in <module>
+    from tensorflow.keras.layers.experimental.preprocessing import RandomRotation
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\__init__.py", line 41, in <module>
+    from tensorflow.python.tools import module_util as _module_util
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\__init__.py", line 46, in <module>
+    from tensorflow.python import data
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\__init__.py", line 25, in <module>
+    from tensorflow.python.data import experimental
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\__init__.py", line 99, in <module>
+    from tensorflow.python.data.experimental import service
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\service\__init__.py", line 140, in <module>
+    from tensorflow.python.data.experimental.ops.data_service_ops import distribute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\data_service_ops.py", line 25, in <module>
+    from tensorflow.python.data.experimental.ops import compression_ops
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\compression_ops.py", line 20, in <module>
+    from tensorflow.python.data.util import structure
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\structure.py", line 26, in <module>
+    from tensorflow.python.data.util import nest
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\nest.py", line 40, in <module>
+    from tensorflow.python.framework import sparse_tensor as _sparse_tensor
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\sparse_tensor.py", line 28, in <module>
+    from tensorflow.python.framework import constant_op
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\constant_op.py", line 29, in <module>
+    from tensorflow.python.eager import execute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\eager\execute.py", line 27, in <module>
+    from tensorflow.python.framework import dtypes
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py", line 511, in <module>
+    np.object,
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 305, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'object'.
+`np.object` was a deprecated alias for the builtin `object`. To avoid this error in existing code, use `object` by itself. Doing this will not modify any behavior and is safe.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ python -c "import tensorflow as tf; print(tf.__version__)"
+2026-03-10 21:58:35.644098: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2026-03-10 21:58:35.644261: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Traceback (most recent call last):
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 320, in __getattr__
+    raise AttributeError("module {!r} has no attribute "
+AttributeError: module 'numpy' has no attribute 'typeDict'
+C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py:511: FutureWarning: In the future `np.object` will be defined as the corresponding NumPy scalar.
+  np.object,
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\__init__.py", line 41, in <module>
+    from tensorflow.python.tools import module_util as _module_util
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\__init__.py", line 46, in <module>
+    from tensorflow.python import data
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\__init__.py", line 25, in <module>
+    from tensorflow.python.data import experimental
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\__init__.py", line 99, in <module>
+    from tensorflow.python.data.experimental import service
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\service\__init__.py", line 140, in <module>
+    from tensorflow.python.data.experimental.ops.data_service_ops import distribute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\data_service_ops.py", line 25, in <module>
+    from tensorflow.python.data.experimental.ops import compression_ops
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\compression_ops.py", line 20, in <module>
+    from tensorflow.python.data.util import structure
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\structure.py", line 26, in <module>
+    from tensorflow.python.data.util import nest
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\nest.py", line 40, in <module>
+    from tensorflow.python.framework import sparse_tensor as _sparse_tensor
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\sparse_tensor.py", line 28, in <module>
+    from tensorflow.python.framework import constant_op
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\constant_op.py", line 29, in <module>
+    from tensorflow.python.eager import execute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\eager\execute.py", line 27, in <module>
+    from tensorflow.python.framework import dtypes
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py", line 511, in <module>
+    np.object,
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 305, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'object'.
+`np.object` was a deprecated alias for the builtin `object`. To avoid this error in existing code, use `object` by itself. Doing this will not modify any behavior and is safe.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ pip install tensorflow==2.5.0 --force-reinstall
+Collecting tensorflow==2.5.0
+  Using cached tensorflow-2.5.0-cp38-cp38-win_amd64.whl.metadata (2.8 kB)
+Collecting numpy~=1.19.2 (from tensorflow==2.5.0)
+  Using cached numpy-1.19.5-cp38-cp38-win_amd64.whl.metadata (2.0 kB)
+Collecting absl-py~=0.10 (from tensorflow==2.5.0)
+  Using cached absl_py-0.15.0-py3-none-any.whl.metadata (2.4 kB)
+Collecting astunparse~=1.6.3 (from tensorflow==2.5.0)
+  Using cached astunparse-1.6.3-py2.py3-none-any.whl.metadata (4.4 kB)
+Collecting flatbuffers~=1.12.0 (from tensorflow==2.5.0)
+  Using cached flatbuffers-1.12-py2.py3-none-any.whl.metadata (872 bytes)
+Collecting google-pasta~=0.2 (from tensorflow==2.5.0)
+  Using cached google_pasta-0.2.0-py3-none-any.whl.metadata (814 bytes)
+Collecting h5py~=3.1.0 (from tensorflow==2.5.0)
+  Using cached h5py-3.1.0-cp38-cp38-win_amd64.whl.metadata (2.1 kB)
+Collecting keras-preprocessing~=1.1.2 (from tensorflow==2.5.0)
+  Using cached Keras_Preprocessing-1.1.2-py2.py3-none-any.whl.metadata (1.9 kB)
+Collecting opt-einsum~=3.3.0 (from tensorflow==2.5.0)
+  Using cached opt_einsum-3.3.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting protobuf>=3.9.2 (from tensorflow==2.5.0)
+  Using cached protobuf-5.29.6-cp38-cp38-win_amd64.whl.metadata (592 bytes)
+Collecting six~=1.15.0 (from tensorflow==2.5.0)
+  Using cached six-1.15.0-py2.py3-none-any.whl.metadata (1.8 kB)
+Collecting termcolor~=1.1.0 (from tensorflow==2.5.0)
+  Using cached termcolor-1.1.0-py3-none-any.whl
+Collecting typing-extensions~=3.7.4 (from tensorflow==2.5.0)
+  Using cached typing_extensions-3.7.4.3-py3-none-any.whl.metadata (2.0 kB)
+Collecting wheel~=0.35 (from tensorflow==2.5.0)
+  Using cached wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting wrapt~=1.12.1 (from tensorflow==2.5.0)
+  Using cached wrapt-1.12.1-py3-none-any.whl
+Collecting gast==0.4.0 (from tensorflow==2.5.0)
+  Using cached gast-0.4.0-py3-none-any.whl.metadata (1.1 kB)
+Collecting tensorboard~=2.5 (from tensorflow==2.5.0)
+  Using cached tensorboard-2.14.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting tensorflow-estimator<2.6.0,>=2.5.0rc0 (from tensorflow==2.5.0)
+  Using cached tensorflow_estimator-2.5.0-py2.py3-none-any.whl.metadata (1.2 kB)
+Collecting keras-nightly~=2.5.0.dev (from tensorflow==2.5.0)
+  Using cached keras_nightly-2.5.0.dev2021032900-py2.py3-none-any.whl.metadata (1.2 kB)
+Collecting grpcio~=1.34.0 (from tensorflow==2.5.0)
+  Using cached grpcio-1.34.1-cp38-cp38-win_amd64.whl.metadata (4.0 kB)
+INFO: pip is looking at multiple versions of tensorboard to determine which version is compatible with other requirements. This could take a while.
+Collecting tensorboard~=2.5 (from tensorflow==2.5.0)
+  Using cached tensorboard-2.13.0-py3-none-any.whl.metadata (1.8 kB)
+  Using cached tensorboard-2.12.3-py3-none-any.whl.metadata (1.8 kB)
+  Using cached tensorboard-2.12.2-py3-none-any.whl.metadata (1.8 kB)
+  Using cached tensorboard-2.12.1-py3-none-any.whl.metadata (1.8 kB)
+  Using cached tensorboard-2.12.0-py3-none-any.whl.metadata (1.8 kB)
+  Using cached tensorboard-2.11.2-py3-none-any.whl.metadata (1.9 kB)
+Collecting google-auth<3,>=1.6.3 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached google_auth-2.49.0-py3-none-any.whl.metadata (6.2 kB)
+Collecting google-auth-oauthlib<0.5,>=0.4.1 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached google_auth_oauthlib-0.4.6-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting markdown>=2.6.8 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached Markdown-3.7-py3-none-any.whl.metadata (7.0 kB)
+Collecting protobuf>=3.9.2 (from tensorflow==2.5.0)
+  Using cached protobuf-3.20.3-cp38-cp38-win_amd64.whl.metadata (699 bytes)
+Collecting requests<3,>=2.21.0 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached requests-2.32.4-py3-none-any.whl.metadata (4.9 kB)
+Collecting setuptools>=41.0.0 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached setuptools-75.3.4-py3-none-any.whl.metadata (6.9 kB)
+Collecting tensorboard-data-server<0.7.0,>=0.6.0 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached tensorboard_data_server-0.6.1-py3-none-any.whl.metadata (1.1 kB)
+Collecting tensorboard-plugin-wit>=1.6.0 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached tensorboard_plugin_wit-1.8.1-py3-none-any.whl.metadata (873 bytes)
+Collecting werkzeug>=1.0.1 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached werkzeug-3.0.6-py3-none-any.whl.metadata (3.7 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting cryptography>=38.0.3 (from google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached cryptography-46.0.5-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+Collecting rsa<5,>=3.1.4 (from google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+Collecting requests-oauthlib>=0.7.0 (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+Collecting importlib-metadata>=4.4 (from markdown>=2.6.8->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached importlib_metadata-8.5.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting charset_normalizer<4,>=2 (from requests<3,>=2.21.0->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached charset_normalizer-3.4.5-cp38-cp38-win_amd64.whl.metadata (39 kB)
+Collecting idna<4,>=2.5 (from requests<3,>=2.21.0->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests<3,>=2.21.0->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached urllib3-2.2.3-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi>=2017.4.17 (from requests<3,>=2.21.0->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Collecting MarkupSafe>=2.1.1 (from werkzeug>=1.0.1->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached MarkupSafe-2.1.5-cp38-cp38-win_amd64.whl.metadata (3.1 kB)
+Collecting cffi>=1.14 (from cryptography>=38.0.3->google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached cffi-1.17.1-cp38-cp38-win_amd64.whl.metadata (1.6 kB)
+INFO: pip is looking at multiple versions of cryptography to determine which version is compatible with other requirements. This could take a while.
+Collecting cryptography>=38.0.3 (from google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached cryptography-46.0.4-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+  Using cached cryptography-46.0.3-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+  Using cached cryptography-46.0.2-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+  Using cached cryptography-46.0.1-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+  Using cached cryptography-46.0.0-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+  Using cached cryptography-45.0.7-cp37-abi3-win_amd64.whl.metadata (5.7 kB)
+Collecting zipp>=3.20 (from importlib-metadata>=4.4->markdown>=2.6.8->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached zipp-3.20.2-py3-none-any.whl.metadata (3.7 kB)
+Collecting pyasn1<0.7.0,>=0.6.1 (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+
+  Using cached pyasn1-0.6.2-py3-none-any.whl.metadata (8.4 kB)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.5->tensorflow==2.5.0)
+  Using cached oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+Collecting pycparser (from cffi>=1.14->cryptography>=38.0.3->google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+
+  Using cached pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Using cached tensorflow-2.5.0-cp38-cp38-win_amd64.whl (422.6 MB)
+Using cached gast-0.4.0-py3-none-any.whl (9.8 kB)
+Using cached absl_py-0.15.0-py3-none-any.whl (132 kB)
+Using cached astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Using cached flatbuffers-1.12-py2.py3-none-any.whl (15 kB)
+Using cached google_pasta-0.2.0-py3-none-any.whl (57 kB)
+Using cached grpcio-1.34.1-cp38-cp38-win_amd64.whl (2.9 MB)
+Using cached h5py-3.1.0-cp38-cp38-win_amd64.whl (2.7 MB)
+Using cached keras_nightly-2.5.0.dev2021032900-py2.py3-none-any.whl (1.2 MB)
+Using cached Keras_Preprocessing-1.1.2-py2.py3-none-any.whl (42 kB)
+Using cached numpy-1.19.5-cp38-cp38-win_amd64.whl (13.3 MB)
+Using cached opt_einsum-3.3.0-py3-none-any.whl (65 kB)
+Using cached six-1.15.0-py2.py3-none-any.whl (10 kB)
+Using cached tensorboard-2.11.2-py3-none-any.whl (6.0 MB)
+Using cached protobuf-3.20.3-cp38-cp38-win_amd64.whl (904 kB)
+Using cached tensorflow_estimator-2.5.0-py2.py3-none-any.whl (462 kB)
+Using cached typing_extensions-3.7.4.3-py3-none-any.whl (22 kB)
+Using cached wheel-0.45.1-py3-none-any.whl (72 kB)
+Using cached google_auth-2.49.0-py3-none-any.whl (240 kB)
+Using cached google_auth_oauthlib-0.4.6-py2.py3-none-any.whl (18 kB)
+Using cached Markdown-3.7-py3-none-any.whl (106 kB)
+Using cached requests-2.32.4-py3-none-any.whl (64 kB)
+Using cached setuptools-75.3.4-py3-none-any.whl (1.3 MB)
+Using cached tensorboard_data_server-0.6.1-py3-none-any.whl (2.4 kB)
+Using cached tensorboard_plugin_wit-1.8.1-py3-none-any.whl (781 kB)
+Using cached werkzeug-3.0.6-py3-none-any.whl (227 kB)
+Using cached certifi-2026.2.25-py3-none-any.whl (153 kB)
+Using cached charset_normalizer-3.4.5-cp38-cp38-win_amd64.whl (140 kB)
+Using cached cryptography-45.0.7-cp37-abi3-win_amd64.whl (3.4 MB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached importlib_metadata-8.5.0-py3-none-any.whl (26 kB)
+Using cached MarkupSafe-2.1.5-cp38-cp38-win_amd64.whl (17 kB)
+Using cached pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+Using cached requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Using cached rsa-4.9.1-py3-none-any.whl (34 kB)
+Using cached urllib3-2.2.3-py3-none-any.whl (126 kB)
+Using cached cffi-1.17.1-cp38-cp38-win_amd64.whl (181 kB)
+Using cached oauthlib-3.3.1-py3-none-any.whl (160 kB)
+Using cached pyasn1-0.6.2-py3-none-any.whl (83 kB)
+Using cached zipp-3.20.2-py3-none-any.whl (9.2 kB)
+Using cached pycparser-2.23-py3-none-any.whl (118 kB)
+Installing collected packages: wrapt, typing-extensions, termcolor, tensorflow-estimator, tensorboard-plugin-wit, keras-nightly, flatbuffers, zipp, wheel, urllib3, tensorboard-data-server, six, setuptools, pycparser, pyasn1, protobuf, oauthlib, numpy, MarkupSafe, idna, gast, charset_normalizer, certifi, werkzeug, rsa, requests, pyasn1-modules, opt-einsum, keras-preprocessing, importlib-metadata, h5py, grpcio, google-pasta, cffi, astunparse, absl-py, requests-oauthlib, markdown, cryptography, google-auth, google-auth-oauthlib, tensorboard, tensorflow
+  Attempting uninstall: wrapt
+    Found existing installation: wrapt 1.12.1
+    Uninstalling wrapt-1.12.1:
+      Successfully uninstalled wrapt-1.12.1
+  Attempting uninstall: typing-extensions
+    Found existing installation: typing-extensions 3.7.4.3
+    Uninstalling typing-extensions-3.7.4.3:
+      Successfully uninstalled typing-extensions-3.7.4.3
+  Attempting uninstall: termcolor
+    Found existing installation: termcolor 1.1.0
+    Uninstalling termcolor-1.1.0:
+      Successfully uninstalled termcolor-1.1.0
+  Attempting uninstall: tensorflow-estimator
+    Found existing installation: tensorflow-estimator 2.5.0
+    Uninstalling tensorflow-estimator-2.5.0:
+      Successfully uninstalled tensorflow-estimator-2.5.0
+  Attempting uninstall: tensorboard-plugin-wit
+    Found existing installation: tensorboard-plugin-wit 1.8.1
+    Uninstalling tensorboard-plugin-wit-1.8.1:
+      Successfully uninstalled tensorboard-plugin-wit-1.8.1
+  Attempting uninstall: keras-nightly
+    Found existing installation: keras-nightly 2.5.0.dev2021032900
+    Uninstalling keras-nightly-2.5.0.dev2021032900:
+      Successfully uninstalled keras-nightly-2.5.0.dev2021032900
+  Attempting uninstall: flatbuffers
+    Found existing installation: flatbuffers 1.12
+    Uninstalling flatbuffers-1.12:
+      Successfully uninstalled flatbuffers-1.12
+  Attempting uninstall: zipp
+    Found existing installation: zipp 3.20.2
+    Uninstalling zipp-3.20.2:
+      Successfully uninstalled zipp-3.20.2
+  Attempting uninstall: wheel
+    Found existing installation: wheel 0.45.1
+    Uninstalling wheel-0.45.1:
+      Successfully uninstalled wheel-0.45.1
+  Attempting uninstall: urllib3
+    Found existing installation: urllib3 2.2.3
+    Uninstalling urllib3-2.2.3:
+      Successfully uninstalled urllib3-2.2.3
+  Attempting uninstall: tensorboard-data-server
+    Found existing installation: tensorboard-data-server 0.6.1
+    Uninstalling tensorboard-data-server-0.6.1:
+      Successfully uninstalled tensorboard-data-server-0.6.1
+  Attempting uninstall: six
+    Found existing installation: six 1.15.0
+    Uninstalling six-1.15.0:
+      Successfully uninstalled six-1.15.0
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 75.3.4
+    Uninstalling setuptools-75.3.4:
+      Successfully uninstalled setuptools-75.3.4
+  Attempting uninstall: pycparser
+    Found existing installation: pycparser 2.23
+    Uninstalling pycparser-2.23:
+      Successfully uninstalled pycparser-2.23
+  Attempting uninstall: pyasn1
+    Found existing installation: pyasn1 0.6.2
+    Uninstalling pyasn1-0.6.2:
+      Successfully uninstalled pyasn1-0.6.2
+  Attempting uninstall: protobuf
+    Found existing installation: protobuf 3.20.3
+    Uninstalling protobuf-3.20.3:
+      Successfully uninstalled protobuf-3.20.3
+  Attempting uninstall: oauthlib
+    Found existing installation: oauthlib 3.3.1
+    Uninstalling oauthlib-3.3.1:
+      Successfully uninstalled oauthlib-3.3.1
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.24.4
+    Uninstalling numpy-1.24.4:
+      Successfully uninstalled numpy-1.24.4
+  Attempting uninstall: MarkupSafe
+    Found existing installation: MarkupSafe 2.1.5
+    Uninstalling MarkupSafe-2.1.5:
+      Successfully uninstalled MarkupSafe-2.1.5
+  Attempting uninstall: idna
+    Found existing installation: idna 3.11
+    Uninstalling idna-3.11:
+      Successfully uninstalled idna-3.11
+  Attempting uninstall: gast
+    Found existing installation: gast 0.4.0
+    Uninstalling gast-0.4.0:
+      Successfully uninstalled gast-0.4.0
+  Attempting uninstall: charset_normalizer
+    Found existing installation: charset-normalizer 3.4.5
+    Uninstalling charset-normalizer-3.4.5:
+      Successfully uninstalled charset-normalizer-3.4.5
+  Attempting uninstall: certifi
+    Found existing installation: certifi 2026.2.25
+    Uninstalling certifi-2026.2.25:
+      Successfully uninstalled certifi-2026.2.25
+  Attempting uninstall: werkzeug
+    Found existing installation: Werkzeug 3.0.6
+    Uninstalling Werkzeug-3.0.6:
+      Successfully uninstalled Werkzeug-3.0.6
+  Attempting uninstall: rsa
+    Found existing installation: rsa 4.9.1
+    Uninstalling rsa-4.9.1:
+      Successfully uninstalled rsa-4.9.1
+  Attempting uninstall: requests
+    Found existing installation: requests 2.32.4
+    Uninstalling requests-2.32.4:
+      Successfully uninstalled requests-2.32.4
+  Attempting uninstall: pyasn1-modules
+    Found existing installation: pyasn1_modules 0.4.2
+    Uninstalling pyasn1_modules-0.4.2:
+      Successfully uninstalled pyasn1_modules-0.4.2
+  Attempting uninstall: opt-einsum
+    Found existing installation: opt-einsum 3.3.0
+    Uninstalling opt-einsum-3.3.0:
+      Successfully uninstalled opt-einsum-3.3.0
+  Attempting uninstall: keras-preprocessing
+    Found existing installation: Keras-Preprocessing 1.1.2
+    Uninstalling Keras-Preprocessing-1.1.2:
+      Successfully uninstalled Keras-Preprocessing-1.1.2
+  Attempting uninstall: importlib-metadata
+    Found existing installation: importlib_metadata 8.5.0
+    Uninstalling importlib_metadata-8.5.0:
+      Successfully uninstalled importlib_metadata-8.5.0
+  Attempting uninstall: h5py
+    Found existing installation: h5py 3.11.0
+    Uninstalling h5py-3.11.0:
+      Successfully uninstalled h5py-3.11.0
+  Attempting uninstall: grpcio
+    Found existing installation: grpcio 1.34.1
+    Uninstalling grpcio-1.34.1:
+      Successfully uninstalled grpcio-1.34.1
+  Attempting uninstall: google-pasta
+    Found existing installation: google-pasta 0.2.0
+    Uninstalling google-pasta-0.2.0:
+      Successfully uninstalled google-pasta-0.2.0
+  Attempting uninstall: cffi
+    Found existing installation: cffi 1.17.1
+    Uninstalling cffi-1.17.1:
+      Successfully uninstalled cffi-1.17.1
+  Attempting uninstall: astunparse
+    Found existing installation: astunparse 1.6.3
+    Uninstalling astunparse-1.6.3:
+      Successfully uninstalled astunparse-1.6.3
+  Attempting uninstall: absl-py
+    Found existing installation: absl-py 0.15.0
+    Uninstalling absl-py-0.15.0:
+      Successfully uninstalled absl-py-0.15.0
+  Attempting uninstall: requests-oauthlib
+    Found existing installation: requests-oauthlib 2.0.0
+    Uninstalling requests-oauthlib-2.0.0:
+      Successfully uninstalled requests-oauthlib-2.0.0
+  Attempting uninstall: markdown
+    Found existing installation: Markdown 3.7
+    Uninstalling Markdown-3.7:
+      Successfully uninstalled Markdown-3.7
+  Attempting uninstall: cryptography
+    Found existing installation: cryptography 45.0.7
+    Uninstalling cryptography-45.0.7:
+      Successfully uninstalled cryptography-45.0.7
+  Attempting uninstall: google-auth
+    Found existing installation: google-auth 2.49.0
+    Uninstalling google-auth-2.49.0:
+      Successfully uninstalled google-auth-2.49.0
+  Attempting uninstall: google-auth-oauthlib
+    Found existing installation: google-auth-oauthlib 0.4.6
+    Uninstalling google-auth-oauthlib-0.4.6:
+      Successfully uninstalled google-auth-oauthlib-0.4.6
+  Attempting uninstall: tensorboard
+    Found existing installation: tensorboard 2.11.2
+    Uninstalling tensorboard-2.11.2:
+      Successfully uninstalled tensorboard-2.11.2
+  Attempting uninstall: tensorflow
+    Found existing installation: tensorflow 2.5.0
+    Uninstalling tensorflow-2.5.0:
+      Successfully uninstalled tensorflow-2.5.0
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+pandas 2.0.3 requires numpy>=1.20.3; python_version < "3.10", but you have numpy 1.19.5 which is incompatible.
+Successfully installed MarkupSafe-2.1.5 absl-py-0.15.0 astunparse-1.6.3 certifi-2026.2.25 cffi-1.17.1 charset_normalizer-3.4.5 cryptography-45.0.7 flatbuffers-1.12 gast-0.4.0 google-auth-2.49.0 google-auth-oauthlib-0.4.6 google-pasta-0.2.0 grpcio-1.34.1 h5py-3.1.0 idna-3.11 importlib-metadata-8.5.0 keras-nightly-2.5.0.dev2021032900 keras-preprocessing-1.1.2 markdown-3.7 numpy-1.19.5 oauthlib-3.3.1 opt-einsum-3.3.0 protobuf-3.20.3 pyasn1-0.6.2 pyasn1-modules-0.4.2 pycparser-2.23 requests-2.32.4 requests-oauthlib-2.0.0 rsa-4.9.1 setuptools-75.3.4 six-1.15.0 tensorboard-2.11.2 tensorboard-data-server-0.6.1 tensorboard-plugin-wit-1.8.1 tensorflow-2.5.0 tensorflow-estimator-2.5.0 termcolor-1.1.0 typing-extensions-3.7.4.3 urllib3-2.2.3 werkzeug-3.0.6 wheel-0.45.1 wrapt-1.12.1 zipp-3.20.2
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ python -c "import tensorflow as tf; print(tf.__version__)"
+2026-03-10 22:01:22.267500: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2026-03-10 22:01:22.267731: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+2.5.0
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ python UNI/cmpt470/m3/CLCDSA-master/CLCDSA-master/CLCDSA_Code/CLCDSA_DLCC/clcdsa_testing.py
+2026-03-10 22:01:49.581870: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2026-03-10 22:01:49.582033: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Traceback (most recent call last):
+  File "UNI/cmpt470/m3/CLCDSA-master/CLCDSA-master/CLCDSA_Code/CLCDSA_DLCC/clcdsa_testing.py", line 4, in <module>
+    import pandas as pd
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\pandas\__init__.py", line 22, in <module>
+    from pandas.compat import is_numpy_dev as _is_numpy_dev  # pyright: ignore # noqa:F401
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\pandas\compat\__init__.py", line 25, in <module>
+    from pandas.compat.numpy import (
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\pandas\compat\numpy\__init__.py", line 25, in <module>
+    raise ImportError(
+ImportError: this version of pandas is incompatible with numpy < 1.20.3
+your numpy version is 1.19.5.
+Please upgrade numpy to >= 1.20.3 to use this pandas version
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ pip install pandas==1.1.5 --force-reinstall
+Collecting pandas==1.1.5
+  Downloading pandas-1.1.5-cp38-cp38-win_amd64.whl.metadata (4.7 kB)
+Collecting python-dateutil>=2.7.3 (from pandas==1.1.5)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2017.2 (from pandas==1.1.5)
+  Using cached pytz-2026.1.post1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting numpy>=1.15.4 (from pandas==1.1.5)
+  Using cached numpy-1.24.4-cp38-cp38-win_amd64.whl.metadata (5.6 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7.3->pandas==1.1.5)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading pandas-1.1.5-cp38-cp38-win_amd64.whl (9.0 MB)
+   ---------------------------------------- 9.0/9.0 MB 21.4 MB/s eta 0:00:00
+Using cached numpy-1.24.4-cp38-cp38-win_amd64.whl (14.9 MB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached pytz-2026.1.post1-py2.py3-none-any.whl (510 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: pytz, six, numpy, python-dateutil, pandas
+  Attempting uninstall: pytz
+    Found existing installation: pytz 2026.1.post1
+    Uninstalling pytz-2026.1.post1:
+      Successfully uninstalled pytz-2026.1.post1
+  Attempting uninstall: six
+    Found existing installation: six 1.15.0
+    Uninstalling six-1.15.0:
+      Successfully uninstalled six-1.15.0
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.19.5
+    Uninstalling numpy-1.19.5:
+      Successfully uninstalled numpy-1.19.5
+  Attempting uninstall: python-dateutil
+    Found existing installation: python-dateutil 2.9.0.post0
+    Uninstalling python-dateutil-2.9.0.post0:
+      Successfully uninstalled python-dateutil-2.9.0.post0
+  Attempting uninstall: pandas
+    Found existing installation: pandas 2.0.3
+    Uninstalling pandas-2.0.3:
+      Successfully uninstalled pandas-2.0.3
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+tensorflow 2.5.0 requires numpy~=1.19.2, but you have numpy 1.24.4 which is incompatible.
+tensorflow 2.5.0 requires six~=1.15.0, but you have six 1.17.0 which is incompatible.
+Successfully installed numpy-1.24.4 pandas-1.1.5 python-dateutil-2.9.0.post0 pytz-2026.1.post1 six-1.17.0
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ python UNI/cmpt470/m3/CLCDSA-master/CLCDSA-master/CLCDSA_Code/CLCDSA_DLCC/clcdsa_testing.py
+2026-03-10 22:03:53.790053: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2026-03-10 22:03:53.790290: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Traceback (most recent call last):
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 320, in __getattr__
+    raise AttributeError("module {!r} has no attribute "
+AttributeError: module 'numpy' has no attribute 'typeDict'
+C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py:511: FutureWarning: In the future `np.object` will be defined as the corresponding NumPy scalar.
+  np.object,
+Traceback (most recent call last):
+  File "UNI/cmpt470/m3/CLCDSA-master/CLCDSA-master/CLCDSA_Code/CLCDSA_DLCC/clcdsa_testing.py", line 1, in <module>
+    import keras.models
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\keras\__init__.py", line 21, in <module>
+    from tensorflow.python import tf2
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\__init__.py", line 41, in <module>
+    from tensorflow.python.tools import module_util as _module_util
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\__init__.py", line 46, in <module>
+    from tensorflow.python import data
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\__init__.py", line 25, in <module>
+    from tensorflow.python.data import experimental
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\__init__.py", line 99, in <module>
+    from tensorflow.python.data.experimental import service
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\service\__init__.py", line 140, in <module>
+    from tensorflow.python.data.experimental.ops.data_service_ops import distribute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\data_service_ops.py", line 25, in <module>
+    from tensorflow.python.data.experimental.ops import compression_ops
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\compression_ops.py", line 20, in <module>
+    from tensorflow.python.data.util import structure
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\structure.py", line 26, in <module>
+    from tensorflow.python.data.util import nest
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\nest.py", line 40, in <module>
+    from tensorflow.python.framework import sparse_tensor as _sparse_tensor
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\sparse_tensor.py", line 28, in <module>
+    from tensorflow.python.framework import constant_op
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\constant_op.py", line 29, in <module>
+    from tensorflow.python.eager import execute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\eager\execute.py", line 27, in <module>
+    from tensorflow.python.framework import dtypes
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py", line 511, in <module>
+    np.object,
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 305, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'object'.
+`np.object` was a deprecated alias for the builtin `object`. To avoid this error in existing code, use `object` by itself. Doing this will not modify any behavior and is safe.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
