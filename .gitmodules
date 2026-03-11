@@ -1,0 +1,3 @@
+[submodule "LICCA/licca"]
+	path = LICCA/licca
+	url = https://github.com/gocko/licca
