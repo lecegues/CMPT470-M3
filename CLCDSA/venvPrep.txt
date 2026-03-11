@@ -1,0 +1,527 @@
+// preparing environment for executing tool
+
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ py -3.8 -m venv clcdsa-env
+
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ . clcdsa-env/Scripts/Activate
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ python --version
+Python 3.8.3
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ python -c "import struct; print(struct.calcsize('P') * 8)"
+64
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ pip install tensorflow==2.5.0
+Collecting tensorflow==2.5.0
+  Downloading https://files.pythonhosted.org/packages/0c/e5/3f2f615bea6fd6ffabcb59b29c8c7de8e7782a11a6f5d6a37b5d6634878e/tensorflow-2.5.0-cp38-cp38-win_amd64.whl (422.6MB)
+     |████████████████████████████████| 422.6MB 75kB/s
+Collecting grpcio~=1.34.0 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/78/f9/cadc5642fc008f599fdb4ac811e3ad335e1878510e872cf7d10dfa2b9170/grpcio-1.34.1-cp38-cp38-win_amd64.whl (2.9MB)
+     |████████████████████████████████| 2.9MB ...
+Collecting wrapt~=1.12.1 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/82/f7/e43cefbe88c5fd371f4cf0cf5eb3feccd07515af9fd6cf7dbf1d1793a797/wrapt-1.12.1.tar.gz
+Collecting astunparse~=1.6.3 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/2b/03/13dde6512ad7b4557eb792fbcf0c653af6076b81e5941d36ec61f7ce6028/astunparse-1.6.3-py2.py3-none-any.whl
+Collecting tensorboard~=2.5 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/bc/a2/ff5f4c299eb37c95299a76015da3f30211468e29d8d6f1d011683279baee/tensorboard-2.14.0-py3-none-any.whl (5.5MB)
+     |████████████████████████████████| 5.5MB 6.4MB/s
+Collecting numpy~=1.19.2 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/5a/13/25a83b9aae5fe9460b1997f5ba48814783d7f460bbbd8cadd96e1481ddf0/numpy-1.19.5-cp38-cp38-win_amd64.whl (13.3MB)
+     |████████████████████████████████| 13.3MB 6.8MB/s
+Collecting typing-extensions~=3.7.4 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/60/7a/e881b5abb54db0e6e671ab088d079c57ce54e8a01a3ca443f561ccadb37e/typing_extensions-3.7.4.3-py3-none-any.whl
+Collecting termcolor~=1.1.0 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/8a/48/a76be51647d0eb9f10e2a4511bf3ffb8cc1e6b14e9e4fab46173aa79f981/termcolor-1.1.0.tar.gz
+Collecting h5py~=3.1.0 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/93/3a/f94b993a8db766983b972f5905cb3f0e655bcb6620088fa2b9141e74ff36/h5py-3.1.0-cp38-cp38-win_amd64.whl (2.7MB)
+     |████████████████████████████████| 2.7MB ...
+Collecting keras-preprocessing~=1.1.2 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/79/4c/7c3275a01e12ef9368a892926ab932b33bb13d55794881e3573482b378a7/Keras_Preprocessing-1.1.2-py2.py3-none-any.whl (42kB)
+     |████████████████████████████████| 51kB 3.4MB/s
+Collecting wheel~=0.35 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/0b/2c/87f3254fd8ffd29e4c02732eee68a83a1d3c346ae39bc6822dcbcb697f2b/wheel-0.45.1-py3-none-any.whl (72kB)
+     |████████████████████████████████| 81kB 5.1MB/s
+Collecting gast==0.4.0 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/b6/48/583c032b79ae5b3daa02225a675aeb673e58d2cb698e78510feceb11958c/gast-0.4.0-py3-none-any.whl
+Collecting flatbuffers~=1.12.0 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/eb/26/712e578c5f14e26ae3314c39a1bdc4eb2ec2f4ddc89b708cf8e0a0d20423/flatbuffers-1.12-py2.py3-none-any.whl
+Collecting google-pasta~=0.2 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/a3/de/c648ef6835192e6e2cc03f40b19eeda4382c49b5bafb43d88b931c4c74ac/google_pasta-0.2.0-py3-none-any.whl (57kB)
+     |████████████████████████████████| 61kB 4.1MB/s
+Collecting tensorflow-estimator<2.6.0,>=2.5.0rc0 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/ec/78/b27f73e923becc6e79e18fe112cf75e3200d1ee35b0dba8fa46181bce56c/tensorflow_estimator-2.5.0-py2.py3-none-any.whl (462kB)
+     |████████████████████████████████| 471kB ...
+Collecting opt-einsum~=3.3.0 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/bc/19/404708a7e54ad2798907210462fd950c3442ea51acc8790f3da48d2bee8b/opt_einsum-3.3.0-py3-none-any.whl (65kB)
+     |████████████████████████████████| 71kB 4.5MB/s
+Collecting keras-nightly~=2.5.0.dev (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/aa/e7/53bc896aa4e11a87aac10a625c676b3a3d57d1c8d9929e4809d31fa0b7d5/keras_nightly-2.5.0.dev2021032900-py2.py3-none-any.whl (1.2MB)
+     |████████████████████████████████| 1.2MB ...
+Collecting absl-py~=0.10 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/97/75/f5e61fb67ecbe45c31035b17562464e11b91a2b8a351bae5ca0db2969e3b/absl_py-0.15.0-py3-none-any.whl (132kB)
+     |████████████████████████████████| 133kB 6.4MB/s
+Collecting protobuf>=3.9.2 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/7a/fb/8c51a0d8ce92d8bfb6eb05278b806a5fbf574ffd62e68046dc49f3166a20/protobuf-5.29.6-cp38-cp38-win_amd64.whl (435kB)
+     |████████████████████████████████| 440kB 6.4MB/s
+Collecting six~=1.15.0 (from tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/ee/ff/48bde5c0f013094d729fe4b0316ba2a24774b3ff1c52d924a8a4cb04078a/six-1.15.0-py2.py3-none-any.whl
+Collecting google-auth<3,>=1.6.3 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/37/45/de64b823b639103de4b63dd193480dce99526bd36be6530c2dba85bf7817/google_auth-2.49.0-py3-none-any.whl (240kB)
+     |████████████████████████████████| 245kB 6.4MB/s
+Collecting google-auth-oauthlib<1.1,>=0.5 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/4a/07/8d9a8186e6768b55dfffeb57c719bc03770cf8a970a074616ae6f9e26a57/google_auth_oauthlib-1.0.0-py2.py3-none-any.whl
+Requirement already satisfied: setuptools>=41.0.0 in c:\users\parke\clcdsa-env\lib\site-packages (from tensorboard~=2.5->tensorflow==2.5.0) (41.2.0)
+Collecting requests<3,>=2.21.0 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/7c/e4/56027c4a6b4ae70ca9de302488c5ca95ad4a39e190093d6c1a8ace08341b/requests-2.32.4-py3-none-any.whl (64kB)
+     |████████████████████████████████| 71kB 2.3MB/s
+Collecting werkzeug>=1.0.1 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/6c/69/05837f91dfe42109203ffa3e488214ff86a6d68b2ed6c167da6cdc42349b/werkzeug-3.0.6-py3-none-any.whl (227kB)
+     |████████████████████████████████| 235kB ...
+Collecting markdown>=2.6.8 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/3f/08/83871f3c50fc983b88547c196d11cf8c3340e37c32d2e9d6152abe2c61f7/Markdown-3.7-py3-none-any.whl (106kB)
+     |████████████████████████████████| 112kB 6.4MB/s
+Collecting tensorboard-data-server<0.8.0,>=0.7.0 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/7a/13/e503968fefabd4c6b2650af21e110aa8466fe21432cd7c43a84577a89438/tensorboard_data_server-0.7.2-py3-none-any.whl
+Collecting cryptography>=38.0.3 (from google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading https://files.pythonhosted.org/packages/60/04/ee2a9e8542e4fa2773b81771ff8349ff19cdd56b7258a0cc442639052edb/cryptography-46.0.5.tar.gz (750kB)
+     |████████████████████████████████| 757kB ...
+ERROR: Exception:
+Traceback (most recent call last):
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_internal\cli\base_command.py", line 188, in main
+    status = self.run(options, args)
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_internal\commands\install.py", line 345, in run
+    resolver.resolve(requirement_set)
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_internal\legacy_resolve.py", line 196, in resolve
+    self._resolve_one(requirement_set, req)
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_internal\legacy_resolve.py", line 359, in _resolve_one
+    abstract_dist = self._get_abstract_dist_for(req_to_install)
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_internal\legacy_resolve.py", line 305, in _get_abstract_dist_for
+    abstract_dist = self.preparer.prepare_linked_requirement(
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_internal\operations\prepare.py", line 214, in prepare_linked_requirement
+    abstract_dist.prepare_distribution_metadata(
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_internal\distributions\source.py", line 30, in prepare_distribution_metadata
+    self.req.load_pyproject_toml()
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_internal\req\req_install.py", line 501, in load_pyproject_toml
+    pyproject_toml_data = load_pyproject_toml(
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_internal\pyproject.py", line 66, in load_pyproject_toml
+    pp_toml = pytoml.load(f)
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_vendor\pytoml\parser.py", line 11, in load
+    return loads(fin.read(), translate=translate, object_pairs_hook=object_pairs_hook, filename=getattr(fin, 'name', repr(fin)))
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_vendor\pytoml\parser.py", line 24, in loads
+    ast = _p_toml(src, object_pairs_hook=object_pairs_hook)
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_vendor\pytoml\parser.py", line 340, in _p_toml
+    s.expect_eof()
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_vendor\pytoml\parser.py", line 125, in expect_eof
+    return self._expect(self.consume_eof())
+  File "c:\users\parke\clcdsa-env\lib\site-packages\pip\_vendor\pytoml\parser.py", line 165, in _expect
+    raise TomlError('msg', self._pos[0], self._pos[1], self._filename)
+pip._vendor.pytoml.core.TomlError: C:\Users\parke\AppData\Local\Temp\pip-install-_kqpkamk\cryptography\pyproject.toml(185, 1): msg
+WARNING: You are using pip version 19.2.3, however version 25.0.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ python -m pip install --upgrade pip
+Collecting pip
+  Using cached https://files.pythonhosted.org/packages/c9/bc/b7db44f5f39f9d0494071bddae6880eb645970366d0a200022a1a93d57f5/pip-25.0.1-py3-none-any.whl
+Installing collected packages: pip
+  Found existing installation: pip 19.2.3
+    Uninstalling pip-19.2.3:
+      Successfully uninstalled pip-19.2.3
+Successfully installed pip-25.0.1
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ pip install tensorflow==2.5.0
+Collecting tensorflow==2.5.0
+  Downloading tensorflow-2.5.0-cp38-cp38-win_amd64.whl.metadata (2.8 kB)
+Collecting numpy~=1.19.2 (from tensorflow==2.5.0)
+  Downloading numpy-1.19.5-cp38-cp38-win_amd64.whl.metadata (2.0 kB)
+Collecting absl-py~=0.10 (from tensorflow==2.5.0)
+  Downloading absl_py-0.15.0-py3-none-any.whl.metadata (2.4 kB)
+Collecting astunparse~=1.6.3 (from tensorflow==2.5.0)
+  Downloading astunparse-1.6.3-py2.py3-none-any.whl.metadata (4.4 kB)
+Collecting flatbuffers~=1.12.0 (from tensorflow==2.5.0)
+  Downloading flatbuffers-1.12-py2.py3-none-any.whl.metadata (872 bytes)
+Collecting google-pasta~=0.2 (from tensorflow==2.5.0)
+  Downloading google_pasta-0.2.0-py3-none-any.whl.metadata (814 bytes)
+Collecting h5py~=3.1.0 (from tensorflow==2.5.0)
+  Downloading h5py-3.1.0-cp38-cp38-win_amd64.whl.metadata (2.1 kB)
+Collecting keras-preprocessing~=1.1.2 (from tensorflow==2.5.0)
+  Downloading Keras_Preprocessing-1.1.2-py2.py3-none-any.whl.metadata (1.9 kB)
+Collecting opt-einsum~=3.3.0 (from tensorflow==2.5.0)
+  Downloading opt_einsum-3.3.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting protobuf>=3.9.2 (from tensorflow==2.5.0)
+  Downloading protobuf-5.29.6-cp38-cp38-win_amd64.whl.metadata (592 bytes)
+Collecting six~=1.15.0 (from tensorflow==2.5.0)
+  Downloading six-1.15.0-py2.py3-none-any.whl.metadata (1.8 kB)
+Collecting termcolor~=1.1.0 (from tensorflow==2.5.0)
+  Downloading termcolor-1.1.0.tar.gz (3.9 kB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting typing-extensions~=3.7.4 (from tensorflow==2.5.0)
+  Downloading typing_extensions-3.7.4.3-py3-none-any.whl.metadata (2.0 kB)
+Collecting wheel~=0.35 (from tensorflow==2.5.0)
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Collecting wrapt~=1.12.1 (from tensorflow==2.5.0)
+  Downloading wrapt-1.12.1.tar.gz (27 kB)
+  Installing build dependencies ... done
+  Getting requirements to build wheel ... done
+  Preparing metadata (pyproject.toml) ... done
+Collecting gast==0.4.0 (from tensorflow==2.5.0)
+  Downloading gast-0.4.0-py3-none-any.whl.metadata (1.1 kB)
+Collecting tensorboard~=2.5 (from tensorflow==2.5.0)
+  Downloading tensorboard-2.14.0-py3-none-any.whl.metadata (1.8 kB)
+Collecting tensorflow-estimator<2.6.0,>=2.5.0rc0 (from tensorflow==2.5.0)
+  Downloading tensorflow_estimator-2.5.0-py2.py3-none-any.whl.metadata (1.2 kB)
+Collecting keras-nightly~=2.5.0.dev (from tensorflow==2.5.0)
+  Downloading keras_nightly-2.5.0.dev2021032900-py2.py3-none-any.whl.metadata (1.2 kB)
+Collecting grpcio~=1.34.0 (from tensorflow==2.5.0)
+  Downloading grpcio-1.34.1-cp38-cp38-win_amd64.whl.metadata (4.0 kB)
+INFO: pip is looking at multiple versions of tensorboard to determine which version is compatible with other requirements. This could take a while.
+Collecting tensorboard~=2.5 (from tensorflow==2.5.0)
+  Downloading tensorboard-2.13.0-py3-none-any.whl.metadata (1.8 kB)
+  Downloading tensorboard-2.12.3-py3-none-any.whl.metadata (1.8 kB)
+  Downloading tensorboard-2.12.2-py3-none-any.whl.metadata (1.8 kB)
+  Downloading tensorboard-2.12.1-py3-none-any.whl.metadata (1.8 kB)
+  Downloading tensorboard-2.12.0-py3-none-any.whl.metadata (1.8 kB)
+  Downloading tensorboard-2.11.2-py3-none-any.whl.metadata (1.9 kB)
+Collecting google-auth<3,>=1.6.3 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading google_auth-2.49.0-py3-none-any.whl.metadata (6.2 kB)
+Collecting google-auth-oauthlib<0.5,>=0.4.1 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading google_auth_oauthlib-0.4.6-py2.py3-none-any.whl.metadata (2.7 kB)
+Collecting markdown>=2.6.8 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading Markdown-3.7-py3-none-any.whl.metadata (7.0 kB)
+Collecting protobuf>=3.9.2 (from tensorflow==2.5.0)
+  Downloading protobuf-3.20.3-cp38-cp38-win_amd64.whl.metadata (699 bytes)
+Collecting requests<3,>=2.21.0 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading requests-2.32.4-py3-none-any.whl.metadata (4.9 kB)
+Requirement already satisfied: setuptools>=41.0.0 in c:\users\parke\clcdsa-env\lib\site-packages (from tensorboard~=2.5->tensorflow==2.5.0) (41.2.0)
+Collecting tensorboard-data-server<0.7.0,>=0.6.0 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading tensorboard_data_server-0.6.1-py3-none-any.whl.metadata (1.1 kB)
+Collecting tensorboard-plugin-wit>=1.6.0 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading tensorboard_plugin_wit-1.8.1-py3-none-any.whl.metadata (873 bytes)
+Collecting werkzeug>=1.0.1 (from tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading werkzeug-3.0.6-py3-none-any.whl.metadata (3.7 kB)
+Collecting pyasn1-modules>=0.2.1 (from google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading pyasn1_modules-0.4.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting cryptography>=38.0.3 (from google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading cryptography-46.0.5-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+Collecting rsa<5,>=3.1.4 (from google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+Collecting requests-oauthlib>=0.7.0 (from google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+Collecting importlib-metadata>=4.4 (from markdown>=2.6.8->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading importlib_metadata-8.5.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting charset_normalizer<4,>=2 (from requests<3,>=2.21.0->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading charset_normalizer-3.4.5-cp38-cp38-win_amd64.whl.metadata (39 kB)
+Collecting idna<4,>=2.5 (from requests<3,>=2.21.0->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting urllib3<3,>=1.21.1 (from requests<3,>=2.21.0->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading urllib3-2.2.3-py3-none-any.whl.metadata (6.5 kB)
+Collecting certifi>=2017.4.17 (from requests<3,>=2.21.0->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading certifi-2026.2.25-py3-none-any.whl.metadata (2.5 kB)
+Collecting MarkupSafe>=2.1.1 (from werkzeug>=1.0.1->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading MarkupSafe-2.1.5-cp38-cp38-win_amd64.whl.metadata (3.1 kB)
+Collecting cffi>=1.14 (from cryptography>=38.0.3->google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading cffi-1.17.1-cp38-cp38-win_amd64.whl.metadata (1.6 kB)
+INFO: pip is looking at multiple versions of cryptography to determine which version is compatible with other requirements. This could take a while.
+Collecting cryptography>=38.0.3 (from google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading cryptography-46.0.4-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+  Downloading cryptography-46.0.3-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+  Downloading cryptography-46.0.2-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+  Downloading cryptography-46.0.1-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+  Downloading cryptography-46.0.0-cp38-abi3-win_amd64.whl.metadata (5.7 kB)
+  Downloading cryptography-45.0.7-cp37-abi3-win_amd64.whl.metadata (5.7 kB)
+Collecting zipp>=3.20 (from importlib-metadata>=4.4->markdown>=2.6.8->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading zipp-3.20.2-py3-none-any.whl.metadata (3.7 kB)
+Collecting pyasn1<0.7.0,>=0.6.1 (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+
+  Downloading pyasn1-0.6.2-py3-none-any.whl.metadata (8.4 kB)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib>=0.7.0->google-auth-oauthlib<0.5,>=0.4.1->tensorboard~=2.5->tensorflow==2.5.0)
+  Downloading oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+Collecting pycparser (from cffi>=1.14->cryptography>=38.0.3->google-auth<3,>=1.6.3->tensorboard~=2.5->tensorflow==2.5.0)
+
+  Downloading pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+Downloading tensorflow-2.5.0-cp38-cp38-win_amd64.whl (422.6 MB)
+   ---------------------------------------- 422.6/422.6 MB 18.9 MB/s eta 0:00:00
+Downloading gast-0.4.0-py3-none-any.whl (9.8 kB)
+Downloading absl_py-0.15.0-py3-none-any.whl (132 kB)
+Downloading astunparse-1.6.3-py2.py3-none-any.whl (12 kB)
+Downloading flatbuffers-1.12-py2.py3-none-any.whl (15 kB)
+Downloading google_pasta-0.2.0-py3-none-any.whl (57 kB)
+Downloading grpcio-1.34.1-cp38-cp38-win_amd64.whl (2.9 MB)
+   ---------------------------------------- 2.9/2.9 MB 11.4 MB/s eta 0:00:00
+Downloading h5py-3.1.0-cp38-cp38-win_amd64.whl (2.7 MB)
+   ---------------------------------------- 2.7/2.7 MB 14.3 MB/s eta 0:00:00
+Downloading keras_nightly-2.5.0.dev2021032900-py2.py3-none-any.whl (1.2 MB)
+   ---------------------------------------- 1.2/1.2 MB 12.5 MB/s eta 0:00:00
+Downloading Keras_Preprocessing-1.1.2-py2.py3-none-any.whl (42 kB)
+Downloading numpy-1.19.5-cp38-cp38-win_amd64.whl (13.3 MB)
+   ---------------------------------------- 13.3/13.3 MB 14.9 MB/s eta 0:00:00
+Downloading opt_einsum-3.3.0-py3-none-any.whl (65 kB)
+Downloading six-1.15.0-py2.py3-none-any.whl (10 kB)
+Downloading tensorboard-2.11.2-py3-none-any.whl (6.0 MB)
+   ---------------------------------------- 6.0/6.0 MB 15.9 MB/s eta 0:00:00
+Downloading protobuf-3.20.3-cp38-cp38-win_amd64.whl (904 kB)
+   ---------------------------------------- 904.4/904.4 kB 13.7 MB/s eta 0:00:00
+Downloading tensorflow_estimator-2.5.0-py2.py3-none-any.whl (462 kB)
+Downloading typing_extensions-3.7.4.3-py3-none-any.whl (22 kB)
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Downloading google_auth-2.49.0-py3-none-any.whl (240 kB)
+Downloading google_auth_oauthlib-0.4.6-py2.py3-none-any.whl (18 kB)
+Downloading Markdown-3.7-py3-none-any.whl (106 kB)
+Downloading requests-2.32.4-py3-none-any.whl (64 kB)
+Downloading tensorboard_data_server-0.6.1-py3-none-any.whl (2.4 kB)
+Downloading tensorboard_plugin_wit-1.8.1-py3-none-any.whl (781 kB)
+   ---------------------------------------- 781.3/781.3 kB 11.0 MB/s eta 0:00:00
+Downloading werkzeug-3.0.6-py3-none-any.whl (227 kB)
+Downloading certifi-2026.2.25-py3-none-any.whl (153 kB)
+Downloading charset_normalizer-3.4.5-cp38-cp38-win_amd64.whl (140 kB)
+Downloading cryptography-45.0.7-cp37-abi3-win_amd64.whl (3.4 MB)
+   ---------------------------------------- 3.4/3.4 MB 16.7 MB/s eta 0:00:00
+Downloading idna-3.11-py3-none-any.whl (71 kB)
+Downloading importlib_metadata-8.5.0-py3-none-any.whl (26 kB)
+Downloading MarkupSafe-2.1.5-cp38-cp38-win_amd64.whl (17 kB)
+Downloading pyasn1_modules-0.4.2-py3-none-any.whl (181 kB)
+Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+Downloading urllib3-2.2.3-py3-none-any.whl (126 kB)
+Downloading cffi-1.17.1-cp38-cp38-win_amd64.whl (181 kB)
+Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+Downloading pyasn1-0.6.2-py3-none-any.whl (83 kB)
+Downloading zipp-3.20.2-py3-none-any.whl (9.2 kB)
+Downloading pycparser-2.23-py3-none-any.whl (118 kB)
+Building wheels for collected packages: termcolor, wrapt
+  Building wheel for termcolor (pyproject.toml) ... done
+  Created wheel for termcolor: filename=termcolor-1.1.0-py3-none-any.whl size=4854 sha256=878f2d106d7e56feb958c3f94695ac4717191930545d006bffbe90322d45f54d
+  Stored in directory: c:\users\parke\appdata\local\pip\cache\wheels\a0\16\9c\5473df82468f958445479c59e784896fa24f4a5fc024b0f501
+  Building wheel for wrapt (pyproject.toml) ... done
+  Created wheel for wrapt: filename=wrapt-1.12.1-py3-none-any.whl size=19596 sha256=9b8f7325c23e5786dc5f552a0568140ed1d82c5b7c51d9cde90b673a05389675
+  Stored in directory: c:\users\parke\appdata\local\pip\cache\wheels\5f\fd\9e\b6cf5890494cb8ef0b5eaff72e5d55a70fb56316007d6dfe73
+Successfully built termcolor wrapt
+Installing collected packages: wrapt, typing-extensions, termcolor, tensorflow-estimator, tensorboard-plugin-wit, keras-nightly, flatbuffers, zipp, wheel, urllib3, tensorboard-data-server, six, pycparser, pyasn1, protobuf, oauthlib, numpy, MarkupSafe, idna, gast, charset_normalizer, certifi, werkzeug, rsa, requests, pyasn1-modules, opt-einsum, keras-preprocessing, importlib-metadata, h5py, grpcio, google-pasta, cffi, astunparse, absl-py, requests-oauthlib, markdown, cryptography, google-auth, google-auth-oauthlib, tensorboard, tensorflow
+Successfully installed MarkupSafe-2.1.5 absl-py-0.15.0 astunparse-1.6.3 certifi-2026.2.25 cffi-1.17.1 charset_normalizer-3.4.5 cryptography-45.0.7 flatbuffers-1.12 gast-0.4.0 google-auth-2.49.0 google-auth-oauthlib-0.4.6 google-pasta-0.2.0 grpcio-1.34.1 h5py-3.1.0 idna-3.11 importlib-metadata-8.5.0 keras-nightly-2.5.0.dev2021032900 keras-preprocessing-1.1.2 markdown-3.7 numpy-1.19.5 oauthlib-3.3.1 opt-einsum-3.3.0 protobuf-3.20.3 pyasn1-0.6.2 pyasn1-modules-0.4.2 pycparser-2.23 requests-2.32.4 requests-oauthlib-2.0.0 rsa-4.9.1 six-1.15.0 tensorboard-2.11.2 tensorboard-data-server-0.6.1 tensorboard-plugin-wit-1.8.1 tensorflow-2.5.0 tensorflow-estimator-2.5.0 termcolor-1.1.0 typing-extensions-3.7.4.3 urllib3-2.2.3 werkzeug-3.0.6 wheel-0.45.1 wrapt-1.12.1 zipp-3.20.2
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ pip install keras==2.4.3
+Collecting keras==2.4.3
+  Downloading Keras-2.4.3-py2.py3-none-any.whl.metadata (1.5 kB)
+Requirement already satisfied: numpy>=1.9.1 in c:\users\parke\clcdsa-env\lib\site-packages (from keras==2.4.3) (1.19.5)
+Collecting scipy>=0.14 (from keras==2.4.3)
+  Downloading scipy-1.10.1-cp38-cp38-win_amd64.whl.metadata (58 kB)
+Collecting pyyaml (from keras==2.4.3)
+  Downloading PyYAML-6.0.3-cp38-cp38-win_amd64.whl.metadata (2.2 kB)
+Requirement already satisfied: h5py in c:\users\parke\clcdsa-env\lib\site-packages (from keras==2.4.3) (3.1.0)
+Downloading Keras-2.4.3-py2.py3-none-any.whl (36 kB)
+Downloading scipy-1.10.1-cp38-cp38-win_amd64.whl (42.2 MB)
+   ---------------------------------------- 42.2/42.2 MB 20.8 MB/s eta 0:00:00
+Downloading PyYAML-6.0.3-cp38-cp38-win_amd64.whl (160 kB)
+Installing collected packages: scipy, pyyaml, keras
+Successfully installed keras-2.4.3 pyyaml-6.0.3 scipy-1.10.1
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ pip install numpy==1.19.5
+Requirement already satisfied: numpy==1.19.5 in c:\users\parke\clcdsa-env\lib\site-packages (1.19.5)
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ pip install pandas scikit-learn antlr4-python3-runtime
+Collecting pandas
+  Downloading pandas-2.0.3-cp38-cp38-win_amd64.whl.metadata (18 kB)
+Collecting scikit-learn
+  Downloading scikit_learn-1.3.2-cp38-cp38-win_amd64.whl.metadata (11 kB)
+Collecting antlr4-python3-runtime
+  Downloading antlr4_python3_runtime-4.13.2-py3-none-any.whl.metadata (304 bytes)
+Collecting python-dateutil>=2.8.2 (from pandas)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas)
+  Downloading pytz-2026.1.post1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.1 (from pandas)
+  Downloading tzdata-2025.3-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting numpy>=1.20.3 (from pandas)
+  Downloading numpy-1.24.4-cp38-cp38-win_amd64.whl.metadata (5.6 kB)
+Requirement already satisfied: scipy>=1.5.0 in c:\users\parke\clcdsa-env\lib\site-packages (from scikit-learn) (1.10.1)
+Collecting joblib>=1.1.1 (from scikit-learn)
+  Downloading joblib-1.4.2-py3-none-any.whl.metadata (5.4 kB)
+Collecting threadpoolctl>=2.0.0 (from scikit-learn)
+  Downloading threadpoolctl-3.5.0-py3-none-any.whl.metadata (13 kB)
+Requirement already satisfied: six>=1.5 in c:\users\parke\clcdsa-env\lib\site-packages (from python-dateutil>=2.8.2->pandas) (1.15.0)
+Downloading pandas-2.0.3-cp38-cp38-win_amd64.whl (10.8 MB)
+   ---------------------------------------- 10.8/10.8 MB 14.0 MB/s eta 0:00:00
+Downloading scikit_learn-1.3.2-cp38-cp38-win_amd64.whl (9.3 MB)
+   ---------------------------------------- 9.3/9.3 MB 12.0 MB/s eta 0:00:00
+Downloading antlr4_python3_runtime-4.13.2-py3-none-any.whl (144 kB)
+Downloading joblib-1.4.2-py3-none-any.whl (301 kB)
+Downloading numpy-1.24.4-cp38-cp38-win_amd64.whl (14.9 MB)
+   ---------------------------------------- 14.9/14.9 MB 17.6 MB/s eta 0:00:00
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading pytz-2026.1.post1-py2.py3-none-any.whl (510 kB)
+Downloading threadpoolctl-3.5.0-py3-none-any.whl (18 kB)
+Downloading tzdata-2025.3-py2.py3-none-any.whl (348 kB)
+Installing collected packages: pytz, antlr4-python3-runtime, tzdata, threadpoolctl, python-dateutil, numpy, joblib, pandas, scikit-learn
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.19.5
+    Uninstalling numpy-1.19.5:
+      Successfully uninstalled numpy-1.19.5
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+tensorflow 2.5.0 requires numpy~=1.19.2, but you have numpy 1.24.4 which is incompatible.
+Successfully installed antlr4-python3-runtime-4.13.2 joblib-1.4.2 numpy-1.24.4 pandas-2.0.3 python-dateutil-2.9.0.post0 pytz-2026.1.post1 scikit-learn-1.3.2 threadpoolctl-3.5.0 tzdata-2025.3
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ pip install --upgrade pip setuptools wheel
+Requirement already satisfied: pip in c:\users\parke\clcdsa-env\lib\site-packages (25.0.1)
+Requirement already satisfied: setuptools in c:\users\parke\clcdsa-env\lib\site-packages (41.2.0)
+Collecting setuptools
+  Using cached setuptools-75.3.4-py3-none-any.whl.metadata (6.9 kB)
+Requirement already satisfied: wheel in c:\users\parke\clcdsa-env\lib\site-packages (0.45.1)
+Using cached setuptools-75.3.4-py3-none-any.whl (1.3 MB)
+Installing collected packages: setuptools
+  Attempting uninstall: setuptools
+    Found existing installation: setuptools 41.2.0
+    Uninstalling setuptools-41.2.0:
+      Successfully uninstalled setuptools-41.2.0
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+tensorflow 2.5.0 requires numpy~=1.19.2, but you have numpy 1.24.4 which is incompatible.
+Successfully installed setuptools-75.3.4
+(clcdsa-env)
+parke@DESKTOP-LDKDSII MINGW64 ~
+$ python
+Python 3.8.3 (tags/v3.8.3:6f8c832, May 13 2020, 22:37:02) [MSC v.1924 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tensorflow as tf
+2026-03-10 15:58:24.225909: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'cudart64_110.dll'; dlerror: cudart64_110.dll not found
+2026-03-10 15:58:24.226101: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+Traceback (most recent call last):
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 320, in __getattr__
+    raise AttributeError("module {!r} has no attribute "
+AttributeError: module 'numpy' has no attribute 'typeDict'
+C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py:511: FutureWarning: In the future `np.object` will be defined as the corresponding NumPy scalar.
+  np.object,
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\__init__.py", line 41, in <module>
+    from tensorflow.python.tools import module_util as _module_util
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\__init__.py", line 46, in <module>
+    from tensorflow.python import data
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\__init__.py", line 25, in <module>
+    from tensorflow.python.data import experimental
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\__init__.py", line 99, in <module>
+    from tensorflow.python.data.experimental import service
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\service\__init__.py", line 140, in <module>
+    from tensorflow.python.data.experimental.ops.data_service_ops import distribute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\data_service_ops.py", line 25, in <module>
+    from tensorflow.python.data.experimental.ops import compression_ops
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\compression_ops.py", line 20, in <module>
+    from tensorflow.python.data.util import structure
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\structure.py", line 26, in <module>
+    from tensorflow.python.data.util import nest
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\nest.py", line 40, in <module>
+    from tensorflow.python.framework import sparse_tensor as _sparse_tensor
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\sparse_tensor.py", line 28, in <module>
+    from tensorflow.python.framework import constant_op
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\constant_op.py", line 29, in <module>
+    from tensorflow.python.eager import execute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\eager\execute.py", line 27, in <module>
+    from tensorflow.python.framework import dtypes
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py", line 511, in <module>
+    np.object,
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 305, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'object'.
+`np.object` was a deprecated alias for the builtin `object`. To avoid this error in existing code, use `object` by itself. Doing this will not modify any behavior and is safe.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+>>> from keras.models import Model
+C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py:511: FutureWarning: In the future `np.object` will be defined as the corresponding NumPy scalar.
+  np.object,
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\keras\__init__.py", line 3, in <module>
+    from tensorflow.keras.layers.experimental.preprocessing import RandomRotation
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\__init__.py", line 41, in <module>
+    from tensorflow.python.tools import module_util as _module_util
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\__init__.py", line 46, in <module>
+    from tensorflow.python import data
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\__init__.py", line 25, in <module>
+    from tensorflow.python.data import experimental
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\__init__.py", line 99, in <module>
+    from tensorflow.python.data.experimental import service
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\service\__init__.py", line 140, in <module>
+    from tensorflow.python.data.experimental.ops.data_service_ops import distribute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\data_service_ops.py", line 25, in <module>
+    from tensorflow.python.data.experimental.ops import compression_ops
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\compression_ops.py", line 20, in <module>
+    from tensorflow.python.data.util import structure
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\structure.py", line 26, in <module>
+    from tensorflow.python.data.util import nest
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\nest.py", line 40, in <module>
+    from tensorflow.python.framework import sparse_tensor as _sparse_tensor
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\sparse_tensor.py", line 28, in <module>
+    from tensorflow.python.framework import constant_op
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\constant_op.py", line 29, in <module>
+    from tensorflow.python.eager import execute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\eager\execute.py", line 27, in <module>
+    from tensorflow.python.framework import dtypes
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py", line 511, in <module>
+    np.object,
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 305, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'object'.
+`np.object` was a deprecated alias for the builtin `object`. To avoid this error in existing code, use `object` by itself. Doing this will not modify any behavior and is safe.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+>>> print("TF:", tf.__version__)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'tf' is not defined
+>>> print("Keras OK")
+Keras OK
+>>> from keras.models import Model
+C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py:511: FutureWarning: In the future `np.object` will be defined as the corresponding NumPy scalar.
+  np.object,
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\keras\__init__.py", line 3, in <module>
+    from tensorflow.keras.layers.experimental.preprocessing import RandomRotation
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\__init__.py", line 41, in <module>
+    from tensorflow.python.tools import module_util as _module_util
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\__init__.py", line 46, in <module>
+    from tensorflow.python import data
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\__init__.py", line 25, in <module>
+    from tensorflow.python.data import experimental
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\__init__.py", line 99, in <module>
+    from tensorflow.python.data.experimental import service
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\service\__init__.py", line 140, in <module>
+    from tensorflow.python.data.experimental.ops.data_service_ops import distribute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\data_service_ops.py", line 25, in <module>
+    from tensorflow.python.data.experimental.ops import compression_ops
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\experimental\ops\compression_ops.py", line 20, in <module>
+    from tensorflow.python.data.util import structure
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\structure.py", line 26, in <module>
+    from tensorflow.python.data.util import nest
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\data\util\nest.py", line 40, in <module>
+    from tensorflow.python.framework import sparse_tensor as _sparse_tensor
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\sparse_tensor.py", line 28, in <module>
+    from tensorflow.python.framework import constant_op
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\constant_op.py", line 29, in <module>
+    from tensorflow.python.eager import execute
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\eager\execute.py", line 27, in <module>
+    from tensorflow.python.framework import dtypes
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\tensorflow\python\framework\dtypes.py", line 511, in <module>
+    np.object,
+  File "C:\Users\parke\clcdsa-env\lib\site-packages\numpy\__init__.py", line 305, in __getattr__
+    raise AttributeError(__former_attrs__[attr])
+AttributeError: module 'numpy' has no attribute 'object'.
+`np.object` was a deprecated alias for the builtin `object`. To avoid this error in existing code, use `object` by itself. Doing this will not modify any behavior and is safe.
+The aliases was originally deprecated in NumPy 1.20; for more details and guidance see the original release note at:
+    https://numpy.org/devdocs/release/1.20.0-notes.html#deprecations
+>>> print("TF:", tf.__version__)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'tf' is not defined
+>>>
+>>> exit()
+(clcdsa-env)
