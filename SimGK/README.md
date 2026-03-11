@@ -2,18 +2,17 @@
 
 ## 1. Artifact Discovery
 - The paper was found by simple google search: https://dl.acm.org/doi/10.1145/3769305
-- however, a repo was not discovered, nor any binaries for code execution.
+- However, a repo was not discovered, nor any binaries for code execution.
 - I attempted to find a repo for SimCL/SimGK but couldn't find a project under either name
 - I also checked the authors of the paper
 
 ## 2. Environment Setup
-Operating system, programming language & version, dependencies, hardware (if needed)
+N/A
 
 ## 3. Installation and Execution Steps
-Installation commands used, execution commands used
+N/A
 
 ## 4. Benchmarks Used
-- None
 - Since this is a cross-language tool, GoogleCodeJam and GPTCloneBench cross-language section would have been used
 
 ## 5. Interventions Performed
