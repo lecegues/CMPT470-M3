@@ -1,0 +1,10 @@
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ code ---
+[INFO] Installing /home/lecegues/SLACC/code/target/code-1.0-SNAPSHOT.jar to /home/lecegues/.m2/repository/edu/ncsu/codeseer/code/1.0-SNAPSHOT/code-1.0-SNAPSHOT.jar
+[INFO] Installing /home/lecegues/SLACC/code/pom.xml to /home/lecegues/.m2/repository/edu/ncsu/codeseer/code/1.0-SNAPSHOT/code-1.0-SNAPSHOT.pom
+[INFO] Installing /home/lecegues/SLACC/code/target/code-1.0-SNAPSHOT-jar-with-dependencies.jar to /home/lecegues/.m2/repository/edu/ncsu/codeseer/code/1.0-SNAPSHOT/code-1.0-SNAPSHOT-jar-with-dependencies.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  29:54 min
+[INFO] Finished at: 2026-03-10T17:45:16-06:00
+[INFO] ------------------------------------------------------------------------
