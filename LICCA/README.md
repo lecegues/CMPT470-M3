@@ -186,7 +186,7 @@ Did the tool run succesfully, did it complete the full workflow, any crashes or 
 
 The tool ran successfully. The workflow completed partially as the Benchmark itself crashed.
 
-![LICCA-1](../assets/LICCA-Running.png)
+![LICCA-1](./assets/LICCA-Running.png)
 
 ## 7. TES Classification
 
