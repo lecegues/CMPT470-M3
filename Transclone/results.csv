@@ -1,0 +1,3 @@
+run,subject_system,dataset,src_lang,tgt_lang,threshold,java_files,python_files,java_functions,python_functions,total_pairs,clone_pairs,non_clone_pairs,clone_percentage,non_clone_percentage,status
+1,config,Bundled sample,python,java,0,15,1,76,3,10,7,3,70.0,30.0,success
+2,codejam_gcj17p01,CLCDSA GoogleCodeJam 2017 Problem 01,python,java,0,21,19,112,14,10,10,0,100.0,0.0,success

@@ -1,0 +1,597 @@
+These are all my terminal outputs for benchmark
+
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone$ cd ~ ; git clone --depth=1 https://github.com/Kawser-nerd/CLCDSA.git
+Cloning into 'CLCDSA'...
+remote: Enumerating objects: 86436, done.
+remote: Counting objects: 100% (86436/86436), done.
+remote: Compressing objects: 100% (82441/82441), done.
+remote: Total 86436 (delta 3436), reused 86407 (delta 3427), pack-reused 0 (from 0)
+Receiving objects: 100% (86436/86436), 60.30 MiB | 2.61 MiB/s, done.
+Resolving deltas: 100% (3436/3436), done.
+Updating files: 100% (87741/87741), done.
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/CLCDSA/
+ CLCDSA.iml   CLCDSA_Code   DataFeatures   README.md  'Source Codes'   contestDownload   csvFilter.java   out
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/CLCDSA/'Source Codes'/
+AtCoder  CodeJamData
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/CLCDSA/'Source Codes'/CodeJamData/ | head -5
+08
+09
+10
+11
+12
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/CLCDSA/'Source Codes'/CodeJamData/ | wc -l
+10
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/CLCDSA/'Source Codes'/CodeJamData/10/ | head -5
+01
+02
+03
+11
+12
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/CLCDSA/'Source Codes'/CodeJamData/10/$(ls ~/CLCDSA/'Source Codes'/CodeJamData/10/ | head -1)/ | head -10
+0.c
+0.cpp
+0.cs
+0.java
+0.py
+1.c
+1.cpp
+1.cs
+1.java
+1.py
+(transclone-venv) buchman@BUCHMAN:~$ ^[[200~ls ~/CLCDSA/'Source Codes'/CodeJamData/10/01/*.java | wc -l~
+wc: invalid option -- '~'
+Try 'wc --help' for more information.
+ls: command not found
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/CLCDSA/'Source Codes'/CodeJamData/10/01/*.java | wc -l
+21
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/CLCDSA/'Source Codes'/CodeJamData/10/01/*.py | wc -l
+21
+(transclone-venv) buchman@BUCHMAN:~$ head -30 ~/CLCDSA/'Source Codes'/CodeJamData/10/01/0.py
+import sys, os
+
+t = int(sys.stdin.readline())
+
+for i in xrange(t):
+    s = sys.stdin.readline().split()
+    n, k = map(int, s)
+    print "Case #%d:" % (i+1),
+    for j in xrange(n):
+        if k & (2**j) == 0:
+            print "OFF"
+            break
+    else:
+        print "ON"
+(transclone-venv) buchman@BUCHMAN:~$ head -10 ~/CLCDSA/'Source Codes'/CodeJamData/12/$(ls ~/CLCDSA/'Source Codes'/CodeJamData/12/ | head -1)/0.py
+
+import sys
+import os
+import itertools
+import math
+import numpy
+
+__file__ = sys.argv[0]
+__path__ = os.path.dirname(__file__)
+__prob__ = os.path.basename(__path__)
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/CLCDSA/'Source Codes'/CodeJamData/12/ | wc -l
+26
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/CLCDSA/'Source Codes'/CodeJamData/
+08  09  10  11  12  13  14  15  16  17
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/CLCDSA/'Source Codes'/CodeJamData/$(ls ~/CLCDSA/'Source Codes'/CodeJamData/ | tail -1)/$(ls ~/CLCDSA/'Source Codes'/CodeJamData/$(ls ~/CLCDSA/'Source Codes'/CodeJamData/ | tail -1)/ | head -1)/0.py | head -1
+/home/buchman/CLCDSA/Source Codes/CodeJamData/17/01/0.py
+(transclone-venv) buchman@BUCHMAN:~$ grep -n "print\|xrange" ~/CLCDSA/'Source Codes'/CodeJamData/$(ls ~/CLCDSA/'Source Codes'/CodeJamData/ | tail -1)/$(ls ~/CLCDSA/'Source Codes'/CodeJamData/$(ls ~/CLCDSA/'Source Codes'/CodeJamData/ | tail -1)/ | head -1)/0.py | head -5
+6:    #print(s)
+9:            #print("flip at " + str(i))
+13:            #print(s)
+17:    print("Case #{}: {}".format(i, run_test()))
+(transclone-venv) buchman@BUCHMAN:~$ ROOT="/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone"
+(transclone-venv) buchman@BUCHMAN:~$ mkdir -p ~/codejam_gcj17p01
+(transclone-venv) buchman@BUCHMAN:~$ cp ~/CLCDSA/'Source Codes'/CodeJamData/17/01/*.java ~/codejam_gcj17p01/
+(transclone-venv) buchman@BUCHMAN:~$ cp ~/CLCDSA/'Source Codes'/CodeJamData/17/01/*.py ~/codejam_gcj17p01/
+(transclone-venv) buchman@BUCHMAN:~$ ls ~/codejam_gcj17p01/ | wc -l
+40
+(transclone-venv) buchman@BUCHMAN:~$ ROOT="/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone"
+(transclone-venv) buchman@BUCHMAN:~$ cd "$ROOT/NiCad"
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/NiCad$ mkdir -p systems/codejam_gcj17p01
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/NiCad$ cp ~/codejam_gcj17p01/*.java systems/codejam_gcj17p01/
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/NiCad$ ./nicad6 functions java systems/codejam_gcj17p01/
+
+NiCad Clone Detector v6.2 (13.11.20)
+
+config=./config/default.cfg
+system=systems/codejam_gcj17p01
+granularity=functions
+language=java
+
+Tue Mar 10 18:31:06 CST 2026
+
+Extracting functions from java files in systems/codejam_gcj17p01
+
+real    0m1.067s
+user    0m0.162s
+sys     0m0.194s
+
+Extracted 112 functions
+
+function extraction done...
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/NiCad$ cp systems/codejam_gcj17p01_functions.xml "$ROOT/storage/codejam_gcj17p01_functions_java.xml"
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/NiCad$ cp ~/codejam_gcj17p01/*.py systems/codejam_gcj17p01/
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/NiCad$ ./nicad6 functions py systems/codejam_gcj17p01/
+
+NiCad Clone Detector v6.2 (13.11.20)
+
+config=./config/default.cfg
+system=systems/codejam_gcj17p01
+granularity=functions
+language=py
+
+Tue Mar 10 18:31:44 CST 2026
+
+Using previously extracted functions from py files in systems/codejam_gcj17p01
+
+Extracted 112 functions
+
+function extraction done...
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/NiCad$ cp systems/codejam_gcj17p01_functions.xml "$ROOT/storage/codejam_gcj17p01_functions_py.xml"
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/NiCad$ rm -rf systems/codejam_gcj17p01 systems/codejam_gcj17p01_functions*
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/NiCad$ cd "$ROOT"
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone$ python3 transclone.py --root "$ROOT/" --cuda False --transcoder_path "" --src_lang python --tgt_lang java --fragment_to_conv "" --threshold 0 --data "$ROOT/storage" --subject_system ~/codejam_gcj17p01 --src_gmn_path "$ROOT/gmn/gmn_srcml_clcdsa.pt" --pairs "$ROOT/storage/pairs.csv" 2>&1 | tee output_gcj17p01.log
+processing system: /home/buchman/codejam_gcj17p01
+codejam_gcj17p01
+
+NiCad Clone Detector v6.2 (13.11.20)
+
+config=./config/default.cfg
+system=systems/codejam_gcj17p01
+granularity=functions
+language=java
+
+Tue Mar 10 18:32:30 CST 2026
+
+Extracting functions from java files in systems/codejam_gcj17p01
+
+real    0m1.047s
+user    0m0.136s
+sys     0m0.202s
+
+Extracted 112 functions
+
+function extraction done...
+
+NiCad Clone Detector v6.2 (13.11.20)
+
+config=./config/default.cfg
+system=systems/codejam_gcj17p01
+granularity=functions
+language=py
+
+Tue Mar 10 18:32:31 CST 2026
+
+Extracting functions from py files in systems/codejam_gcj17p01
+
+real    0m0.900s
+user    0m0.173s
+sys     0m0.199s
+
+Extracted 14 functions
+
+function extraction done...
+INFO - 03/10/26 18:32:41 - 0:00:15 - ============ Model Reloading
+INFO - 03/10/26 18:32:41 - 0:00:15 - Reloading encoder from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/storage/pretrained/translator_transcoder_size_from_DOBF.pth ...
+WARNING - 03/10/26 18:32:48 - 0:00:22 - Lang cpp_sa matched to pretrained cpp_sa lang embedding.
+WARNING - 03/10/26 18:32:48 - 0:00:22 - Lang java_sa matched to pretrained java_sa lang embedding.
+WARNING - 03/10/26 18:32:48 - 0:00:22 - Lang python_sa matched to pretrained python_sa lang embedding.
+INFO - 03/10/26 18:32:48 - 0:00:22 - Reloading decoders from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/storage/pretrained/translator_transcoder_size_from_DOBF.pth ...
+WARNING - 03/10/26 18:32:55 - 0:00:29 - Lang cpp_sa matched to pretrained cpp_sa lang embedding.
+WARNING - 03/10/26 18:32:55 - 0:00:29 - Lang java_sa matched to pretrained java_sa lang embedding.
+WARNING - 03/10/26 18:32:55 - 0:00:29 - Lang python_sa matched to pretrained python_sa lang embedding.
+INFO - 03/10/26 18:32:55 - 0:00:29 - Number of parameters (encoder): 143279616
+INFO - 03/10/26 18:32:55 - 0:00:29 - Number of parameters (decoders): 168482304
+INFO - 03/10/26 18:32:55 - 0:00:29 - Number of decoders: 1
+
+INFO - 03/10/26 18:32:55 - 0:00:29 - CONVERTING --> systems/codejam_gcj17p01/0.py
+/home/buchman/transclone-venv/lib/python3.12/site-packages/tree_sitter/__init__.py:36: FutureWarning: Language(path, name) is deprecated. Use Language(ptr, name) instead.
+  warn("{} is deprecated. Use {} instead.".format(old, new), FutureWarning)
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:01 - 0:00:35 - CONVERTED-->systems/codejam_gcj17p01/0.py
+INFO - 03/10/26 18:33:01 - 0:00:35 - CONVERTING --> systems/codejam_gcj17p01/11.py
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:05 - 0:00:39 - CONVERTED-->systems/codejam_gcj17p01/11.py
+INFO - 03/10/26 18:33:05 - 0:00:39 - CONVERTING --> systems/codejam_gcj17p01/12.py
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:06 - 0:00:40 - CONVERTED-->systems/codejam_gcj17p01/12.py
+INFO - 03/10/26 18:33:06 - 0:00:40 - CONVERTING --> systems/codejam_gcj17p01/12.py
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:10 - 0:00:44 - CONVERTED-->systems/codejam_gcj17p01/12.py
+INFO - 03/10/26 18:33:10 - 0:00:44 - CONVERTING --> systems/codejam_gcj17p01/16.py
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:15 - 0:00:49 - CONVERTED-->systems/codejam_gcj17p01/16.py
+INFO - 03/10/26 18:33:15 - 0:00:49 - CONVERTING --> systems/codejam_gcj17p01/17.py
+adding to path /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone
+/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone
+input_code
+
+def run_test() :
+INDENT
+    s, k = input().split()
+    k = int(k)
+    s = [c == '+' for c in s]
+    flips = 0
+    for i in range(len(s) - k + 1) :
+    INDENT
+        if not s [i] :
+        INDENT
+            flips += 1
+            for j in range(i, i + k) :
+            INDENT
+                s [j] = not s [j]
+            DEDENT
+        DEDENT
+    DEDENT
+    return flips if all(s) else "IMPOSSIBLE"
+DEDENT
+
+Tokenized python_sa function:
+['def', 'run_test', '(', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 's', ',', 'k', '=', 'input', '(', ')', '.', 'split', '(', ')', 'NEW_LINE', 'k', '=', 'int', '(', 'k', ')', 'NEW_LINE', 's', '=', '[', 'c', '==', "' + '", 'for', 'c', 'in', 's', ']', 'NEW_LINE', 'flips', '=', '0', 'NEW_LINE', 'for', 'i', 'in', 'range', '(', 'len', '(', 's', ')', '-', 'k', '+', '1', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'not', 's', '[', 'i', ']', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'flips', '+=', '1', 'NEW_LINE', 'for', 'j', 'in', 'range', '(', 'i', ',', 'i', '+', 'k', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 's', '[', 'j', ']', '=', 'not', 's', '[', 'j', ']', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'return', 'flips', 'if', 'all', '(', 's', ')', 'else', '" IMPOSSIBLE "', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
+input_code
+
+def solve(pancake_str, k) :
+INDENT
+    pancakes = list(pancake_str)
+    flip_count = 0
+    for i in range(len(pancakes)) :
+    INDENT
+        if pancakes [i] == '-' :
+        INDENT
+            flip_count += 1
+            for j in range(i, i + k) :
+            INDENT
+                if j > = len(pancakes) :
+                INDENT
+                    return 'IMPOSSIBLE'
+                DEDENT
+                pancakes [j] = '+' if pancakes [j] == '-' else '-'
+
+            DEDENT
+        DEDENT
+    DEDENT
+    return str(flip_count)
+DEDENT
+
+Tokenized python_sa function:
+['def', 'solve', '(', 'pancake_str', ',', 'k', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'pancakes', '=', 'list', '(', 'pancake_str', ')', 'NEW_LINE', 'flip_count', '=', '0', 'NEW_LINE', 'for', 'i', 'in', 'range', '(', 'len', '(', 'pancakes', ')', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'pancakes', '[', 'i', ']', '==', "' - '", ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'flip_count', '+=', '1', 'NEW_LINE', 'for', 'j', 'in', 'range', '(', 'i', ',', 'i', '+', 'k', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'j', '>', '=', 'len', '(', 'pancakes', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', "' IMPOSSIBLE '", 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'pancakes', '[', 'j', ']', '=', "' + '", 'if', 'pancakes', '[', 'j', ']', '==', "' - '", 'else', "' - '", 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'return', 'str', '(', 'flip_count', ')', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
+input_code
+
+def toggle(cake) :
+INDENT
+    return '-+' [cake == '-']
+DEDENT
+
+Tokenized python_sa function:
+['def', 'toggle', '(', 'cake', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', "' - + '", '[', 'cake', '==', "' - '", ']', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']        
+input_code
+
+def solve(S, K) :
+INDENT
+    S = list(S)
+    flip_count = 0
+    for s in range(len(S) - K + 1) :
+    INDENT
+        if S [s] == '+' :
+        INDENT
+            continue
+        DEDENT
+        for k in range(K) :
+        INDENT
+            S [s + k] = toggle(S [s + k])
+        DEDENT
+        flip_count += 1
+    DEDENT
+    if '-' in S :
+    INDENT
+        return 'IMPOSSIBLE'
+    DEDENT
+    return flip_count
+
+DEDENT
+
+Tokenized python_sa function:
+['def', 'solve', '(', 'S', ',', 'K', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'S', '=', 'list', '(', 'S', ')', 'NEW_LINE', 'flip_count', '=', '0', 'NEW_LINE', 'for', 's', 'in', 'range', '(', 'len', '(', 'S', ')', '-', 'K', '+', '1', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'S', '[', 's', ']', '==', "' + '", ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'continue', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'for', 'k', 'in', 'range', '(', 'K', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'S', '[', 's', '+', 'k', ']', '=', 'toggle', '(', 'S', '[', 's', '+', 'k', ']', ')', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'flip_count', '+=', '1', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'if', "' - '", 'in', 'S', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', "' IMPOSSIBLE '", 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'return', 'flip_count', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE'] 
+input_code
+
+def solve(data, k) :
+INDENT
+    l = len(data)
+    if l == k :
+    INDENT
+        if data == ["+"] * k :
+        INDENT
+            return 0
+        DEDENT
+        elif data == ["-"] * k :
+        INDENT
+            return 1
+        DEDENT
+        else :
+        INDENT
+            return - 1
+        DEDENT
+    DEDENT
+    if l < k :
+    INDENT
+        if data == ["+"] * l :
+        INDENT
+            return 0
+        DEDENT
+        else :
+        INDENT
+            return - 1
+        DEDENT
+    DEDENT
+    flips = 0
+    if data [0] == '-' :
+    INDENT
+        for i in range(0, k) :
+        INDENT
+            if data [i] == "+" :
+            INDENT
+                data [i] = "-"
+            DEDENT
+            else :
+            INDENT
+                data [i] = "+"
+            DEDENT
+        DEDENT
+        flips = 1
+
+    DEDENT
+    result = solve(data [1 :], k)
+    if result < 0 :
+    INDENT
+        return - 1
+    DEDENT
+    return result + flips
+
+DEDENT
+
+Tokenized python_sa function:
+['def', 'solve', '(', 'data', ',', 'k', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'l', '=', 'len', '(', 'data', ')', 'NEW_LINE', 'if', 'l', '==', 'k', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'data', '==', '[', '" + "', ']', '*', 'k', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', '0', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'elif', 'data', '==', '[', '" - "', ']', '*', 'k', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', '1', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'else', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', '-', '1', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'if', 'l', '<', 'k', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'data', '==', '[', '" + "', ']', '*', 'l', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', '0', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'else', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', '-', '1', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'flips', '=', '0', 'NEW_LINE', 'if', 'data', '[', '0', ']', '==', "' - '", ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'for', 'i', 'in', 'range', '(', '0', ',', 'k', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'data', '[', 'i', ']', '==', '" + "', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'data', '[', 'i', ']', '=', '" - "', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'else', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'data', '[', 'i', ']', '=', '" + "', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'flips', '=', '1', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'result', '=', 'solve', '(', 'data', '[', '1', ':', ']', ',', 'k', ')', 'NEW_LINE', 'if', 'result', '<', '0', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', '-', '1', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'return', 'result', '+', 'flips', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
+input_code
+
+def flip(row) :
+INDENT
+    return row.translate(str.maketrans('-+', '+-'))
+DEDENT
+
+Tokenized python_sa function:
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:16 - 0:00:50 - CONVERTED-->systems/codejam_gcj17p01/17.py
+INFO - 03/10/26 18:33:16 - 0:00:50 - CONVERTING --> systems/codejam_gcj17p01/17.py
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:20 - 0:00:54 - CONVERTED-->systems/codejam_gcj17p01/17.py
+INFO - 03/10/26 18:33:20 - 0:00:54 - CONVERTING --> systems/codejam_gcj17p01/17.py
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:22 - 0:00:56 - CONVERTED-->systems/codejam_gcj17p01/17.py
+INFO - 03/10/26 18:33:22 - 0:00:56 - CONVERTING --> systems/codejam_gcj17p01/19.py
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:27 - 0:01:01 - CONVERTED-->systems/codejam_gcj17p01/19.py
+INFO - 03/10/26 18:33:27 - 0:01:01 - CONVERTING --> systems/codejam_gcj17p01/19.py
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:31 - 0:01:05 - CONVERTED-->systems/codejam_gcj17p01/19.py
+INFO - 03/10/26 18:33:31 - 0:01:05 - CONVERTING --> systems/codejam_gcj17p01/20.py
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:35 - 0:01:09 - CONVERTED-->systems/codejam_gcj17p01/20.py
+INFO - 03/10/26 18:33:35 - 0:01:09 - CONVERTING --> systems/codejam_gcj17p01/3.py
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:36 - 0:01:10 - CONVERTED-->systems/codejam_gcj17p01/3.py
+INFO - 03/10/26 18:33:36 - 0:01:10 - CONVERTING --> systems/codejam_gcj17p01/3.py
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:37 - 0:01:11 - CONVERTED-->systems/codejam_gcj17p01/3.py
+INFO - 03/10/26 18:33:37 - 0:01:11 - CONVERTING --> systems/codejam_gcj17p01/9.py
+['def', 'flip', '(', 'row', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', 'row', '.', 'translate', '(', 'str', '.', 'maketrans', '(', "' - + '", ',', "' + - '", ')', ')', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
+input_code
+
+def solve(row, k) :
+INDENT
+    flips = 0
+    for i in range(len(row)) :
+    INDENT
+        if row [i] == '-' and i + k < = len(row) :
+        INDENT
+            row = row [: i] + flip(row [i : i + k]) + row [i + k :]
+            flips += 1
+        DEDENT
+    DEDENT
+    if '-' in row :
+    INDENT
+        return "IMPOSSIBLE"
+    DEDENT
+    else :
+    INDENT
+        return flips
+    DEDENT
+DEDENT
+
+Tokenized python_sa function:
+['def', 'solve', '(', 'row', ',', 'k', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'flips', '=', '0', 'NEW_LINE', 'for', 'i', 'in', 'range', '(', 'len', '(', 'row', ')', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'row', '[', 'i', ']', '==', "' - '", 'and', 'i', '+', 'k', '<', '=', 'len', '(', 'row', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'row', '=', 'row', '[', ':', 'i', ']', '+', 'flip', '(', 'row', '[', 'i', ':', 'i', '+', 'k', ']', ')', '+', 'row', '[', 'i', '+', 'k', ':', ']', 'NEW_LINE', 'flips', '+=', '1', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'if', "' - '", 'in', 'row', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', '" IMPOSSIBLE "', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'else', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', 'flips', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
+input_code
+
+def main() :
+INDENT
+    t = int(input())
+    for ti in range(t) :
+    INDENT
+        row, k = input().split(" ")
+        print ("Case #{}: {}".format(ti + 1, solve(row, int(k))))
+    DEDENT
+DEDENT
+
+Tokenized python_sa function:
+['def', 'main', '(', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 't', '=', 'int', '(', 'input', '(', ')', ')', 'NEW_LINE', 'for', 'ti', 'in', 'range', '(', 't', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'row', ',', 'k', '=', 'input', '(', ')', '.', 'split', '(', '" ▁ "', ')', 'NEW_LINE', 'print', '(', '" Case ▁ # { } : ▁ { } "', '.', 'format', '(', 'ti', '+', '1', ',', 'solve', '(', 'row', ',', 'int', '(', 'k', ')', ')', ')', ')', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
+input_code
+
+def solve() :
+INDENT
+    s, k = input().split()
+    k = int(k)
+    a = [False if x == '-' else True for x in s]
+    ans = 0
+    for i in range(len(a) - k + 1) :
+    INDENT
+        if not a [i] :
+        INDENT
+            ans += 1
+            for pos in range(i, i + k) :
+            INDENT
+                a [pos] = not a [pos]
+            DEDENT
+        DEDENT
+    DEDENT
+    if all(x for x in a) :
+    INDENT
+        return ans
+    DEDENT
+    else :
+    INDENT
+        return "IMPOSSIBLE"
+
+    DEDENT
+DEDENT
+
+Tokenized python_sa function:
+['def', 'solve', '(', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 's', ',', 'k', '=', 'input', '(', ')', '.', 'split', '(', ')', 'NEW_LINE', 'k', '=', 'int', '(', 'k', ')', 'NEW_LINE', 'a', '=', '[', 'False', 'if', 'x', '==', "' - '", 'else', 'True', 'for', 'x', 'in', 's', ']', 'NEW_LINE', 'ans', '=', '0', 'NEW_LINE', 'for', 'i', 'in', 'range', '(', 'len', '(', 'a', ')', '-', 'k', '+', '1', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'not', 'a', '[', 'i', ']', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'ans', '+=', '1', 'NEW_LINE', 'for', 'pos', 'in', 'range', '(', 'i', ',', 'i', '+', 'k', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'a', '[', 'pos', ']', '=', 'not', 'a', '[', 'pos', ']', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'if', 'all', '(', 'x', 'for', 'x', 'in', 'a', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', 'ans', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'else', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', '" IMPOSSIBLE "', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
+input_code
+
+def prepare_input() :
+INDENT
+    local = False
+    task = 'A'
+    attempt = - 1
+    import sys
+    if local :
+    INDENT
+        sys.stdin = open("../input.txt", "r")
+    DEDENT
+    else :
+    INDENT
+        filename = "../{}-small-attempt{}".format(task, attempt) if attempt > = 0 else "../{}-large".format(task)
+        sys.stdin = open(filename + ".in", "r")
+        sys.stdout = open(filename + ".out", "w")
+
+    DEDENT
+DEDENT
+
+Tokenized python_sa function:
+['def', 'prepare_input', '(', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'local', '=', 'False', 'NEW_LINE', 'task', '=', "' A '", 'NEW_LINE', 'attempt', '=', '-', '1', 'NEW_LINE', 'import', 'sys', 'NEW_LINE', 'if', 'local', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'sys', '.', 'stdin', '=', 'open', '(', '" . . / input . txt "', ',', '" r "', ')', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'else', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'filename', '=', '" . . / { } - small - attempt { } "', '.', 'format', '(', 'task', ',', 'attempt', ')', 'if', 'attempt', '>', '=', '0', 'else', '" . . / { } - large "', '.', 'format', '(', 'task', ')', 'NEW_LINE', 'sys', '.', 'stdin', '=', 'open', '(', 'filename', '+', '" . in "', ',', '" r "', ')', 'NEW_LINE', 'sys', '.', 'stdout', '=', 'open', '(', 'filename', '+', '" . out "', ',', '" w "', ')', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']    
+input_code
+
+def go(M) :
+INDENT
+    S, K = M.split()
+    K = int(K)
+    n = len(S)
+    S = [c == '+' for c in S]
+    t = 0
+    for i in range(n - K + 1) :
+    INDENT
+        if not S [i] :
+        INDENT
+            t += 1
+            for j in range(i, i + K) :
+            INDENT
+                S [j] ^= 1
+            DEDENT
+        DEDENT
+    DEDENT
+    for i in range(n - K + 1, n) :
+    INDENT
+        if not S [i] :
+        INDENT
+            return 'IMPOSSIBLE'
+        DEDENT
+    DEDENT
+    return t
+
+DEDENT
+
+Tokenized python_sa function:
+['def', 'go', '(', 'M', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'S', ',', 'K', '=', 'M', '.', 'split', '(', ')', 'NEW_LINE', 'K', '=', 'int', '(', 'K', ')', 'NEW_LINE', 'n', '=', 'len', '(', 'S', ')', 'NEW_LINE', 'S', '=', '[', 'c', '==', "' + '", 'for', 'c', 'in', 'S', ']', 'NEW_LINE', 't', '=', '0', 'NEW_LINE', 'for', 'i', 'in', 'range', '(', 'n', '-', 'K', '+', '1', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'not', 'S', '[', 'i', ']', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 't', '+=', '1', 'NEW_LINE', 'for', 'j', 'in', 'range', '(', 'i', ',', 'i', '+', 'K', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'S', '[', 'j', ']', '^=', '1', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'for', 'i', 'in', 'range', '(', 'n', '-', 'K', '+', '1', ',', 'n', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'not', 'S', '[', 'i', ']', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', "' IMPOSSIBLE '", 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'return', 't', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
+input_code
+
+def eprint(* args, ** kwargs) :
+INDENT
+    print(* args, file = sys.stderr, ** kwargs)
+DEDENT
+
+Tokenized python_sa function:
+['def', 'eprint', '(', '*', 'args', ',', '**', 'kwargs', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'print', '(', '*', 'args', ',', 'file', '=', 'sys', '.', 'stderr', ',', '**', 'kwargs', ')', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
+input_code
+
+def ln(f = int) :
+INDENT
+    return list(map(f, stdin.readline().strip().split()))
+DEDENT
+
+Tokenized python_sa function:
+['def', 'ln', '(', 'f', '=', 'int', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', 'list', '(', 'map', '(', 'f', ',', 'stdin', '.', 'readline', '(', ')', '.', 'strip', '(', ')', '.', 'split', '(', ')', ')', ')', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
+input_code
+Loading codes from /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/data/bpe/cpp-java-python/codes ...
+Read 50000 codes from the codes file.
+INFO - 03/10/26 18:33:41 - 0:01:15 - CONVERTED-->systems/codejam_gcj17p01/9.py
+INFO - 03/10/26 18:33:41 - 0:01:15 - **** CONVERTED ALL FILES ****
+INFO - 03/10/26 18:33:41 - 0:01:15 - **** ERRORS ARE SAVED IN: /mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/errors.txt ****
+INFO - 03/10/26 18:33:42 - 0:01:15 - ***transcoder phase done***
+INFO - 03/10/26 18:33:42 - 0:01:16 - ****PAIRS SAVED IN-->./storage/pairs.csv****
+INFO - 03/10/26 18:33:42 - 0:01:16 - ***generated pairs***
+/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/gmn/models.py:238: UserWarning: 'nn.glob.GlobalAttention' is deprecated, use 'nn.aggr.AttentionalAggregation' instead
+  self.pool=GlobalAttention(gate_nn=self.mlp_gate)
+INFO - 03/10/26 18:33:50 - 0:01:23 - ***saved in: storage/predictions***
+INFO - 03/10/26 18:33:50 - 0:01:23 - 
+                                                 Source language: python
+                                                 Target language: java
+                                                 Threshold: 0
+                                                 Number of clone pairs: 10
+                                                 Number of non-clone pairs: 0
+                                                 Percentage of clone pairs: 100.0%
+                                                 Percentage of non-clone pairs: 0.0%
+                                         #
+
+def solve(state, K) :
+INDENT
+    N = len(state)
+    xs = np.array([1 if s == '+' else 0 for s in state])
+    ret = 0
+    for i in range(N - K + 1) :
+    INDENT
+        if xs [i] == 0 :
+        INDENT
+            ret += 1
+            xs [i : i + K] = 1 - xs [i : i + K]
+
+        DEDENT
+    DEDENT
+    if xs [- K :].sum() == K :
+    INDENT
+        return "%d" % ret
+    DEDENT
+    return "IMPOSSIBLE"
+
+DEDENT
+
+Tokenized python_sa function:
+['def', 'solve', '(', 'state', ',', 'K', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'N', '=', 'len', '(', 'state', ')', 'NEW_LINE', 'xs', '=', 'np', '.', 'array', '(', '[', '1', 'if', 's', '==', "' + '", 'else', '0', 'for', 's', 'in', 'state', ']', ')', 'NEW_LINE', 'ret', '=', '0', 'NEW_LINE', 'for', 'i', 'in', 'range', '(', 'N', '-', 'K', '+', '1', ')', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'if', 'xs', '[', 'i', ']', '==', '0', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'ret', '+=', '1', 'NEW_LINE', 'xs', '[', 'i', ':', 'i', '+', 'K', ']', '=', '1', '-', 'xs', '[', 'i', ':', 'i', '+', 'K', ']', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'if', 'xs', '[', '-', 'K', ':', ']', '.', 'sum', '(', ')', '==', 'K', ':', 'NEW_LINE', 'INDENT', 'NEW_LINE', 'INDENT', 'return', '" % d "', '%', 'ret', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE', 'return', '" IMPOSSIBLE "', 'NEW_LINE', 'DEDENT', 'DEDENT', 'NEW_LINE']
+vocab len for test data  540
+/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone/storage/mutation_formatted.csv
+(transclone-venv) buchman@BUCHMAN:/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone$

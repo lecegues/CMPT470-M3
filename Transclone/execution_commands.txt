@@ -1,0 +1,60 @@
+# Transclone – Execution Commands
+# All commands run during reproducibility assessment
+
+ROOT="/mnt/c/Users/buchi/OneDrive/Documents/USASK/CMPT 470/Transclone/transclone"
+source ~/transclone-venv/bin/activate
+
+cd "$ROOT"
+
+python3 transclone.py \
+  --root "$ROOT/" \
+  --cuda False \
+  --transcoder_path "" \
+  --src_lang python \
+  --tgt_lang java \
+  --fragment_to_conv "" \
+  --threshold 0 \
+  --data "$ROOT/storage" \
+  --subject_system "$ROOT/storage/systems/config" \
+  --src_gmn_path "$ROOT/gmn/gmn_srcml_clcdsa.pt" \
+  --pairs "$ROOT/storage/pairs.csv" \
+  2>&1 | tee output_config.log
+
+# Step 1: Clone CLCDSA dataset
+cd ~
+git clone --depth=1 https://github.com/Kawser-nerd/CLCDSA.git
+
+# Step 2: Create subject system directory (no spaces in path)
+mkdir -p ~/codejam_gcj17p01
+cp ~/CLCDSA/'Source Codes'/CodeJamData/17/01/*.java ~/codejam_gcj17p01/
+cp ~/CLCDSA/'Source Codes'/CodeJamData/17/01/*.py ~/codejam_gcj17p01/
+
+# Step 3: Pre-generate NiCad XML files
+#   (workaround: NiCad fails when project path contains spaces)
+cd "$ROOT/NiCad"
+mkdir -p systems/codejam_gcj17p01
+cp ~/codejam_gcj17p01/*.java systems/codejam_gcj17p01/
+./nicad6 functions java systems/codejam_gcj17p01/
+cp systems/codejam_gcj17p01_functions.xml "$ROOT/storage/codejam_gcj17p01_functions_java.xml"
+
+cp ~/codejam_gcj17p01/*.py systems/codejam_gcj17p01/
+./nicad6 functions py systems/codejam_gcj17p01/
+cp systems/codejam_gcj17p01_functions.xml "$ROOT/storage/codejam_gcj17p01_functions_py.xml"
+
+rm -rf systems/codejam_gcj17p01 systems/codejam_gcj17p01_functions*
+
+# Step 4: Run Transclone
+cd "$ROOT"
+python3 transclone.py \
+  --root "$ROOT/" \
+  --cuda False \
+  --transcoder_path "" \
+  --src_lang python \
+  --tgt_lang java \
+  --fragment_to_conv "" \
+  --threshold 0 \
+  --data "$ROOT/storage" \
+  --subject_system ~/codejam_gcj17p01 \
+  --src_gmn_path "$ROOT/gmn/gmn_srcml_clcdsa.pt" \
+  --pairs "$ROOT/storage/pairs.csv" \
+  2>&1 | tee output_gcj17p01.log
