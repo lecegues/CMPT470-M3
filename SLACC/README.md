@@ -5,14 +5,14 @@ Official Artifact Link:
 https://github.com/DynamicCodeSearch/SLACC?tab=readme-ov-file
 
 How it was discovered:
-Found through GitHub using the tool and title name.
+SLACC Artifact was found on GitHub using the paper title & tool name.
 
 Verification Notes:
 This is verified to be the official GitHub because they link the study (https://github.com/DynamicCodeSearch/SLACC/blob/ICSE20/SLACC_preprint.pdf) 
-and one of the authors, "George Mathew" is the GitHub owner.
+- The author of the repository is the author of the official paper (George Mathew)
 
 Note:
-The last commit was 6 years ago. The The README also references a preconfigured VirtualBox image hosted on Google Drive,
+The last commit was 6 years ago. The README also references a preconfigured VirtualBox image hosted on Google Drive,
 but it is expired. Therefore, I assume there has been no updates to the project itself.
 
 ## 2. Environment Setup
@@ -83,16 +83,17 @@ Java execution also failed since some classes were not found.
 Refer to #6. "Observed Failures" for more information and `RUN_LOG.log`
 
 ## 4. Benchmarks Used
-Benchmark Used:
-`Example` dataset which was included in the repository was used.
-This is a small dataset referenced in the repository's README.
+Primary Benchmark (intended by paper):
+- Google Code Jam dataset (cross-language between Java and Python)
+Note: Due to execution failures during the pipeline stages, I could not execute it on this benchmark.
+Therefore, the `Example` dataset which was included in the official GitHub repository was used only for smoke testing and validation.
 
 Settings Used:
 Default settings were used. Other than changing the scripts to not build everytime (as it took too long), there were 
 no algorithmic changes.
 
 ## 5. Interventions Performed
-I had to perform a couple interversions since 
+I had to perform a couple interventions since :
 1) the "easier" method was not working and had to set up my environment manually
 2) there were version errors and some difficulties with the instructions
 
@@ -129,3 +130,18 @@ Therefore, I rate it as a "TES-C (partially executable)"
 
 Justification:
 SLACC artifact found, installed, built, partially executed. Just didn't complete the full workflow succesfully.
+
+## 8. Reproducibility Issues
+Summary of issues impacting ability to reproduce causing a TES-C: 
+1. Artifact Age
+Last commit was ~6 years ago, making me believe that environment assumptions are outdated
+
+2. Deprecated MongoDB driver
+SLACC codebase uses legacy MongoDB commands, which is not supported in the MongoDB version I used.
+Additionally, those older MongoDB versions are unavailable with my current WSL Ubuntu version.
+
+3. Python2 Dependency
+It requires Python 2.7 which is deprecated
+
+4. Missing VirtualBox image
+Artifact documentation recommends preconfigured VM image, but download link is expired
